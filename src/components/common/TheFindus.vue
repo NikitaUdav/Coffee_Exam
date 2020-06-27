@@ -41,15 +41,16 @@ export default {
 .find-us {
   position: relative;
   padding: 10px;
+  padding-top: 50px;
   text-align: center;
   padding-bottom: 50px;
   &__container {
-    padding-top: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     @media screen and (min-width: $screen-tablet) {
       flex-direction: row;
+      align-items: center;
     }
   }
   &__article {
@@ -58,6 +59,12 @@ export default {
     color: $grey-light;
     background-color: rgba($dark, 0.8);
     border-radius: 20px;
+    order: -1;
+    margin-bottom: 30px;
+    @media screen and (min-width: $screen-tablet) {
+      order: 0;
+      margin: 0 auto;
+    }
   }
   &__info-list {
     max-width: 500px;
@@ -80,11 +87,8 @@ export default {
     border: solid 2px $dark;
     border-radius: 20px;
     overflow: hidden;
-    margin-bottom: 50px;
-    margin-right: 10px;
     @media screen and (min-width: $screen-tablet) {
       width: 600px;
-      margin-bottom: 0px;
     }
   }
   &__title {
@@ -97,6 +101,7 @@ export default {
       border-radius: 20px;
       max-width: 300px;
       @include text($H700, 700, $light);
+      margin-bottom: 60px;
     }
     @media screen and (min-width: $screen-tablet) {
       text-align: start;

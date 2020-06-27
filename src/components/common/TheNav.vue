@@ -24,7 +24,7 @@
             <router-link class="nav__text" to="/about">coffee machine</router-link>
           </li>
           <li class="nav__link">
-            <router-link class="nav__text" to="/about">alternative coffee</router-link>
+            <router-link class="nav__text" to="/alts">alternative coffee</router-link>
           </li>
         </ul>
         <aside class="nav__info">

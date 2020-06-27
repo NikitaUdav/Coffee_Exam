@@ -83,12 +83,14 @@ export default {
 </script>
 <style lang="scss">
 .our-products {
+  padding-top: 30px;
   position: relative;
-  min-height: 80vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   &__title {
+    margin-bottom: 20px;
     @include text($H700, 700, $light);
     text-align: center;
   }
@@ -128,14 +130,14 @@ $style: glide;
   }
 }
 .button {
-  @include text($H500, 700, $late);
+  @include text($H400, 700, $late);
   transition: all ease-in 0.3s;
   border-radius: 5px;
   cursor: pointer;
   outline: none;
   border: none;
-  width: 120px;
-  height: 40px;
+  text-transform: capitalize;
+  padding: 5px 15px 5px 15px;
   &:hover {
     color: $light;
     background-color: $late;
