@@ -35,7 +35,7 @@
     <ul class="products-store__shop-list">
       <li v-for="item in alternative" :key="item.id" class="shop-card">
         <dir class="shop-card__img-wrapper">
-          <img class="img" :src="item.img" alt="img" />
+          <img class="imgs" :src="item.img" :alt="item.img" />
         </dir>
         <h3 class="shop-card__title title">{{item.name}}</h3>
         <span class="shop-card__price">{{item.price}}</span>
@@ -55,9 +55,6 @@ export default {
     return {
       alternative
     };
-  },
-  methods() {
-    console.log(alternative);
   }
 };
 </script>
@@ -76,22 +73,23 @@ export default {
     padding: 40px;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
   }
 }
 .shop-card {
+  margin: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 5px;
+  padding: 20px;
   background-color: $grey;
   width: 25%;
   border-radius: 5px;
   &__img-wrapper {
     background-color: white;
-    z-index: 1;
     position: relative;
     width: 100%;
-    height: 300px;
+    height: 370px;
     margin-bottom: 10px;
     border-radius: 10px;
     overflow: hidden;
@@ -108,5 +106,16 @@ export default {
     width: 100%;
     justify-content: space-between;
   }
+}
+.imgs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  max-height: 300px;
+  max-width: 100%;
+  vertical-align: middle;
 }
 </style>

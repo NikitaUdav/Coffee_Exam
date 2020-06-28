@@ -20,6 +20,5 @@ git commit -m 'deploy'
 # git push -f git@github.com:NikitaUdav/NikitaUdav.github.io.git master
 
 # если вы публикуете по адресу https://<USERNAME>.github.io/<REPO>
-git push -f https://github.com/nikitaudav/Coffee_Exam/vue-project.git master:gh-pages
-
+git push -f git@github.com:nikitaudav/Coffee_Exam.git master:gh-pages
 cd -

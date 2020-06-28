@@ -1,6 +1,5 @@
 module.exports = {
-  publicPath:
-    process.env.NODE_ENV === "production" ? "/Coffee_Exam/vue-project/" : "/",
+  publicPath: process.env.NODE_ENV === "production" ? "/Coffee_Exam/" : "/",
   css: {
     loaderOptions: {
       scss: {

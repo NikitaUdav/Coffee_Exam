@@ -45,12 +45,16 @@ export default {
   text-align: center;
   padding-bottom: 50px;
   &__container {
+    margin: 0 auto;
+    max-width: 1570px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
     @media screen and (min-width: $screen-tablet) {
       flex-direction: row;
       align-items: center;
+      justify-content: space-between;
     }
   }
   &__article {
@@ -63,7 +67,7 @@ export default {
     margin-bottom: 30px;
     @media screen and (min-width: $screen-tablet) {
       order: 0;
-      margin: 0 auto;
+      margin-bottom: 0px;
     }
   }
   &__info-list {
@@ -83,12 +87,15 @@ export default {
   }
   &__map-wrapper {
     display: flex;
+    width: 100%;
     height: 400px;
+    max-width: 600px;
     border: solid 2px $dark;
     border-radius: 20px;
     overflow: hidden;
     @media screen and (min-width: $screen-tablet) {
       width: 600px;
+      margin-right: 20px;
     }
   }
   &__title {
