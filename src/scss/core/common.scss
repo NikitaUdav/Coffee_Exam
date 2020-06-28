@@ -52,3 +52,22 @@ a {
     object-position: 100% 0%;
   }
 }
+.button {
+  @include text($H350, 700, $late);
+  width: 100%;
+  max-width: 300px;
+  transition: all ease-in 0.3s;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+  padding: 5px 15px 5px 15px;
+  @media screen and (min-width: $screen-tablet) {
+    max-width: 150px;
+    &:hover {
+      color: $light;
+      background-color: $late;
+    }
+  }
+}

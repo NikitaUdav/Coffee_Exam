@@ -7,38 +7,57 @@
         <ul class="glide__slides">
           <li class="glide__slide">
             <div class="glide__img-wrapper">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcStB3Wd0ue63mYPA8X_NmawKQONaVpePdXMfapsQJVpR-_n4JbV&usqp=CAU"
-                alt
-              />
+              <img class="img glide__img" src="./img/coffe1.png" alt="picture" />
             </div>
-            <h3 class="glide__title title">Titlfgfgfggfgfgfge</h3>
+            <h3 class="glide__title title">Coffee</h3>
             <div class="glide__inputs">
-              <button class="button-more button">More</button>
+              <router-link class="our-products__link" to="/coffee">More</router-link>
             </div>
           </li>
           <li class="glide__slide">
             <div class="glide__img-wrapper">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcStB3Wd0ue63mYPA8X_NmawKQONaVpePdXMfapsQJVpR-_n4JbV&usqp=CAU"
-                alt
-              />
+              <img class="img glide__img" src="./img/cip1.jpg" alt="picture" />
+            </div>
+            <h3 class="glide__title title">Keep Cup</h3>
+            <div class="glide__inputs">
+              <router-link class="our-products__link" to="/keepcup">More</router-link>
+            </div>
+          </li>
+
+          <li class="glide__slide">
+            <div class="glide__img-wrapper">
+              <img class="img glide__img" src="./img/french1.jpg" alt="picture" />
+            </div>
+            <h3 class="glide__title title">Alternative coffee</h3>
+            <div class="glide__inputs">
+              <router-link class="our-products__link" to="/alts">More</router-link>
             </div>
           </li>
           <li class="glide__slide">
             <div class="glide__img-wrapper">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcStB3Wd0ue63mYPA8X_NmawKQONaVpePdXMfapsQJVpR-_n4JbV&usqp=CAU"
-                alt
-              />
+              <img class="img glide__img" src="./img/cip1.jpg" alt="picture" />
+            </div>
+            <h3 class="glide__title title">Sweets</h3>
+            <div class="glide__inputs">
+              <router-link class="our-products__link" to="/sweets">More</router-link>
             </div>
           </li>
           <li class="glide__slide">
             <div class="glide__img-wrapper">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcStB3Wd0ue63mYPA8X_NmawKQONaVpePdXMfapsQJVpR-_n4JbV&usqp=CAU"
-                alt
-              />
+              <img class="img glide__img" src="./img/machine1.png" alt="picture" />
+            </div>
+            <h3 class="glide__title title">Coffee Machine</h3>
+            <div class="glide__inputs">
+              <router-link class="our-products__link" to="/sweets">More</router-link>
+            </div>
+          </li>
+          <li class="glide__slide">
+            <div class="glide__img-wrapper">
+              <img class="img glide__img" src="./img/cip1.jpg" alt="picture" />
+            </div>
+            <h3 class="glide__title title">Alternative coffee</h3>
+            <div class="glide__inputs">
+              <router-link class="our-products__link" to="/alts">More</router-link>
             </div>
           </li>
         </ul>
@@ -51,14 +70,14 @@ import Glide from "@glidejs/glide";
 const config = {
   type: "carousel",
   startAt: 0,
-  gap: 100,
+  gap: 60,
   perView: 3,
   focusAt: 0,
   animationDuration: 500,
-  // autoplay: 5000,
+  autoplay: 5000,
   hoverpause: true,
   breakpoints: {
-    1300: {
+    1270: {
       perView: 2
     },
     900: {
@@ -91,62 +110,77 @@ export default {
   justify-content: space-around;
   &__title {
     margin-bottom: 20px;
+    padding: 10px;
     @include text($H700, 700, $light);
     text-align: center;
+  }
+  &__link {
+    @include text($H350, 700, $late);
+    background-color: $white;
+    text-decoration: none !important;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    transition: all ease-in 0.3s;
+    border-radius: 5px;
+    text-transform: capitalize;
+    padding: 5px 15px 5px 15px;
+    @media screen and (min-width: $screen-tablet) {
+      max-width: 150px;
+      &:hover {
+        color: $light;
+        background-color: $late;
+      }
+    }
   }
 }
 $style: glide;
 .#{$style} {
-  padding: 10px;
   display: flex;
   align-items: center;
+  padding-bottom: 40px;
   &__track {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
   &__slide {
+    transition: all ease 0.3s;
     padding: 34px;
     background-color: rgba($dark, 0.95);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
+    border-radius: 20px;
+    @media screen and (min-width: $screen-tablet) {
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+  &__img-wrapper {
+    background-color: white;
+    position: relative;
+    width: 100%;
+    height: 0px;
+    padding-bottom: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  &__img {
+    z-index: 10 !important;
   }
 
-  &__img-wrapper {
-    opacity: 1;
-    margin-bottom: 10px;
-    overflow: hidden;
-    border-radius: 10px;
-  }
   &__title {
     @include text($H500, 700, $light);
-    margin-bottom: 25px;
+    margin-bottom: 30px;
   }
   &__inputs {
     display: flex;
     width: 100%;
     justify-content: center;
-  }
-}
-.button {
-  @include text($H400, 700, $late);
-  transition: all ease-in 0.3s;
-  border-radius: 5px;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  text-transform: capitalize;
-  padding: 5px 15px 5px 15px;
-  &:hover {
-    color: $light;
-    background-color: $late;
-  }
-}
-.price {
-  @include text($H500, 700, $sale);
-  &::before {
-    content: "$ ";
   }
 }
 </style>

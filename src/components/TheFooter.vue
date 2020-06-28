@@ -78,10 +78,14 @@ export default {
     display: flex;
     flex-direction: column;
     height: 100%;
+    align-items: center;
+    @media screen and (min-width: $screen-tablet) {
+      align-items: flex-start;
+    }
   }
   &__title {
     @include text($H400, 400, $grey-light);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   &__input {
     @include text($H300, 400, $late);
@@ -90,12 +94,16 @@ export default {
     border: none;
     color: $late;
     width: 100%;
-    height: 35px;
+    height: 45px;
     border-radius: 3px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     &::placeholder {
       color: inherit;
       font-size: inherit;
+    }
+    @media screen and (min-width: $screen-tablet) {
+      height: 35px;
+      margin-bottom: 10px;
     }
   }
 }

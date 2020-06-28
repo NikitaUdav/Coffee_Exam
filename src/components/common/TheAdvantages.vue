@@ -91,7 +91,8 @@ export default {
   position: relative;
   transition: all ease-out 0.5s;
   border-radius: 5px;
-  width: 300px;
+  width: 100%;
+  max-width: 400px;
   padding: 20px;
   height: 100%;
   display: flex;
@@ -99,6 +100,9 @@ export default {
   justify-content: space-evenly;
   align-items: center;
   opacity: 0.95;
+  -webkit-box-shadow: 1px 7px 18px 3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 7px 18px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 7px 18px 3px rgba(0, 0, 0, 0.75);
   background: rgba(170, 132, 70, 1);
   background: -moz-linear-gradient(
     45deg,

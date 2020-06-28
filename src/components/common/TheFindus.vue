@@ -58,6 +58,9 @@ export default {
     }
   }
   &__article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
     max-width: 600px;
     color: $grey-light;
@@ -68,18 +71,19 @@ export default {
     @media screen and (min-width: $screen-tablet) {
       order: 0;
       margin-bottom: 0px;
+      align-items: flex-start;
     }
   }
   &__info-list {
-    max-width: 500px;
-    :first-child {
-      margin-right: 20px;
-    }
+    width: 100%;
+    max-width: 310px;
     @media screen and (min-width: $screen-tablet) {
       text-align: start;
     }
   }
   &__info-item {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 10px;
     :first-child {
       font-weight: 700;
@@ -112,6 +116,7 @@ export default {
     }
     @media screen and (min-width: $screen-tablet) {
       text-align: start;
+      margin: 0px 0px 20px 0px;
     }
   }
   &__text {

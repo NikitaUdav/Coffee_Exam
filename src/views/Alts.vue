@@ -40,8 +40,8 @@
         <h3 class="shop-card__title title">{{item.name}}</h3>
         <span class="shop-card__price">{{item.price}}</span>
         <div class="shop-card__inpunts">
-          <button class="button shop-card__button-buy">add to cat</button>
-          <button class="button shop-card__button-info">info</button>
+          <button class="shop-card__button">add to cat</button>
+          <button class="shop-card__button">info</button>
         </div>
       </li>
     </ul>
@@ -60,20 +60,28 @@ export default {
 </script>
 <style lang="scss">
 .products-store {
+  background-color: #dee2e6;
   display: flex;
   flex-direction: column;
   &__info {
-    padding-top: 80px;
-    background-color: $grey;
+    padding-bottom: 10px;
+    padding-top: 70px;
+    background-color: #dee2e6;
   }
   &__slider {
     width: 50%;
+    border-radius: 5px;
+    overflow: hidden;
   }
   &__shop-list {
-    padding: 40px;
+    padding: 20px;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    @media screen and (min-width: $screen-tablet) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 }
 .shop-card {
@@ -83,8 +91,19 @@ export default {
   align-items: center;
   padding: 20px;
   background-color: $grey;
-  width: 25%;
+  width: 95%;
+  max-width: 550px;
   border-radius: 5px;
+  margin-bottom: 50px;
+  @media screen and (min-width: $screen-tablet) {
+    width: 45%;
+  }
+  @media screen and (min-width: $screen-hd) {
+    width: 24%;
+  }
+  @media screen and (min-width: $screen-retina) {
+    width: 15%;
+  }
   &__img-wrapper {
     background-color: white;
     position: relative;
@@ -105,6 +124,23 @@ export default {
     display: flex;
     width: 100%;
     justify-content: space-between;
+  }
+  &__button {
+    @include text($H350, 700, $late);
+    padding: 10px 15px 10px 15px;
+    transition: all ease-in 0.3s;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    text-transform: capitalize;
+    @media screen and (min-width: $screen-tablet) {
+      max-width: 150px;
+      &:hover {
+        color: $light;
+        background-color: $late;
+      }
+    }
   }
 }
 .imgs {
