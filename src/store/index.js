@@ -19,6 +19,7 @@ export default new Vuex.Store({
   mutations,
   plugins: [
     createPersistedState({
+      storage: window.sessionStorage,
       key: "cart",
       paths: ["cart", "TotalPositions", "Total"],
     }),
