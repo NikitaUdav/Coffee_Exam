@@ -37,10 +37,12 @@
         <dir class="shop-card__img-wrapper">
           <img class="imgs" :src="item.img" :alt="item.img" />
         </dir>
-        <h3 class="shop-card__title title">{{item.name}}</h3>
-        <span class="shop-card__price">{{item.price}}</span>
+        <h3 class="shop-card__title title">{{ item.name }}</h3>
+        <span class="shop-card__price">{{ item.price }}</span>
         <div class="shop-card__inpunts">
-          <button class="shop-card__button">add to cat</button>
+          <button @click="addToItems(item)" class="shop-card__button">
+            add to cat
+          </button>
           <button class="shop-card__button">info</button>
         </div>
       </li>
@@ -48,14 +50,18 @@
   </section>
 </template>
 <script>
+import { mapActions } from "vuex";
 import { alternative } from "../prod";
 export default {
   name: "Alts",
   data() {
     return {
-      alternative
+      alternative,
     };
-  }
+  },
+  methods: {
+    ...mapActions(["addToItems"]),
+  },
 };
 </script>
 <style lang="scss">
@@ -78,6 +84,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     @media screen and (min-width: $screen-tablet) {
       flex-direction: row;
       flex-wrap: wrap;
@@ -92,17 +99,24 @@ export default {
   padding: 20px;
   background-color: $grey;
   width: 95%;
-  max-width: 550px;
+  max-width: 350px;
   border-radius: 5px;
   margin-bottom: 50px;
   @media screen and (min-width: $screen-tablet) {
+    transition: all ease 0.3s;
     width: 45%;
+    margin-right: 70px;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
   @media screen and (min-width: $screen-hd) {
     width: 24%;
+    margin-right: 30px;
   }
   @media screen and (min-width: $screen-retina) {
     width: 15%;
+    margin-right: 20px;
   }
   &__img-wrapper {
     background-color: white;

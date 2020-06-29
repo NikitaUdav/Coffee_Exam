@@ -8,13 +8,21 @@
 <script>
 import TheNav from "./components/common/TheNav";
 import TheFooter from "./components/TheFooter";
+function reset() {
+  return;
+}
 export default {
   name: "App",
   components: {
     TheNav,
-    TheFooter
-  }
+    TheFooter,
+  },
+  state: reset(),
+  mutations: {
+    reset(state) {
+      Object.assign(state, reset());
+    },
+  },
 };
 </script>
-<style lang="scss">
-</style>
+<style lang="scss"></style>
