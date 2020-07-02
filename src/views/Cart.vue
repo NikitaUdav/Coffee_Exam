@@ -2,7 +2,7 @@
   <section class="cart">
     <div class="cart__store">
       <header>
-        <h2 class="title cart__title">Shopping basket</h2>
+        <h2 class="title cart__title">Shopping Cart</h2>
         <span class="undo" v-if="Object.keys(delItem).length > 0"
           >Deleted. <a href="#" @click.prevent="revivalItem()">Restore</a></span
         >
@@ -11,8 +11,10 @@
       <div class="body">
         <ul class="cart__list">
           <li
+            :id="item.id"
             class="cart__product product"
-            v-for="item in cart"
+            :class="{ red: i === activeItem }"
+            v-for="(item, i) in cart"
             v-bind:key="item.id"
           >
             <div class="product__product-wrapper">
@@ -22,52 +24,50 @@
               <h3 class="title">
                 {{ item.name }}
               </h3>
-              <span class="product__price">{{ item.cost }} $</span>
+              <span class="product__price">$ {{ item.cost }}</span>
               <div class="product__actions">
                 <div class="product__quantity">
-                  <label for="product__cd-product">Кол-во</label>
-                  <span class="product__select">
-                    <input
-                      name="quantity"
-                      id="number"
-                      @change="chengeQt()"
-                      v-model.number="item.qt"
-                      type="number"
-                      min="1"
-                      max="100"
-                    />
-                  </span>
+                  <input
+                    class="product__quantity"
+                    name="quantity"
+                    id="number"
+                    @change="chengeQt()"
+                    v-model.number="item.qt"
+                    type="number"
+                    min="1"
+                    max="100"
+                  />
                 </div>
-                <a
+                <button
                   class="product__delete-item"
-                  @click.prevent="removeItem(item.id)"
-                  >&#10005;</a
+                  @mouseenter="selectItem(i)"
+                  @mouseleave="delselectItem()"
+                  @click.prevent="removeItem(item.id), delselectItem()"
                 >
+                  &#10005;
+                </button>
               </div>
             </div>
           </li>
         </ul>
       </div>
-      <footer>
-        <router-link to="/checkout" class="checkout btn">
-          <em
-            >Итого - <span>{{ Total }} $</span></em
-          >
-        </router-link>
-      </footer>
     </div>
-
-    <form action="" class="cart__form"></form>
+    <the-pay-form />
   </section>
 </template>
 <script>
+import ThePayForm from "../components/common/ThePayForm";
 import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Cart",
   data() {
     return {
       cartOpen: null,
+      activeItem: null,
     };
+  },
+  components: {
+    ThePayForm,
   },
   computed: {
     ...mapGetters(["cart", "TotalPositions", "delItem", "Total"]),
@@ -77,18 +77,68 @@ export default {
     showCart(event) {
       console.log(event);
     },
+    selectItem(i) {
+      this.activeItem = i;
+    },
+    delselectItem() {
+      this.activeItem = null;
+    },
   },
 };
 </script>
 <style lang="scss">
 .cart {
   padding: 10px;
-  padding-top: 77px;
+  padding-bottom: 30px;
+  padding-top: 87px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
+  @media screen and (min-width: 840px) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  background: rgba(217, 217, 217, 1);
+  background: -moz-linear-gradient(
+    top,
+    rgba(217, 217, 217, 1) 0%,
+    rgba(245, 245, 245, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    left bottom,
+    color-stop(0%, rgba(217, 217, 217, 1)),
+    color-stop(100%, rgba(245, 245, 245, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(217, 217, 217, 1) 0%,
+    rgba(245, 245, 245, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(217, 217, 217, 1) 0%,
+    rgba(245, 245, 245, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(217, 217, 217, 1) 0%,
+    rgba(245, 245, 245, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(217, 217, 217, 1) 0%,
+    rgba(245, 245, 245, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d9d9d9', endColorstr='#f5f5f5', GradientType=0 );
+
   &__store {
-    width: 50%;
-    border: 1px solid black;
+    width: 100%;
+
+    @media screen and (min-width: 840px) {
+      width: 50%;
+    }
   }
   &__title {
     text-align: center;
@@ -96,9 +146,12 @@ export default {
   }
 }
 .product {
+  transition: all ease 0.4s;
   position: relative;
   display: flex;
-  background-color: $palaceholder;
+  border-bottom: 1px solid $palaceholder;
+  padding-bottom: 20px;
+  padding-right: 20px;
   margin-bottom: 20px;
   &__product-wrapper {
     max-width: 100px;
@@ -109,8 +162,27 @@ export default {
   }
   &__list {
   }
+  &__price {
+    @include text($H350, 400, $dark);
+  }
+  &__quantity {
+    text-align: center;
+    font-size: $H300;
+    background-color: inherit;
+    outline: none;
+    border: 1px solid $dark;
+    border-radius: 10px;
+    :first-child {
+      border: none;
+    }
+  }
   &__delete-item {
     position: absolute;
+    outline: none;
+    border: none;
+    background-color: inherit;
+    font-size: 17px;
+    cursor: pointer;
     right: 10px;
     top: 1px;
   }
@@ -120,5 +192,9 @@ export default {
     align-items: center;
     justify-content: space-evenly;
   }
+}
+
+.red {
+  background-color: rgba(255, 9, 9, 0.8);
 }
 </style>

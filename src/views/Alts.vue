@@ -41,7 +41,7 @@
         <span class="shop-card__price">{{ item.price }}</span>
         <div class="shop-card__inpunts">
           <button @click="addToItems(item)" class="shop-card__button">
-            add to cat
+            add to cart
           </button>
           <button class="shop-card__button">info</button>
         </div>
