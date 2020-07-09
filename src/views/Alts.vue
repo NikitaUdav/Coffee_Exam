@@ -1,46 +1,19 @@
 <template>
   <section class="products-store">
-    <article class="products-store__info">
-      <div
-        id="ui"
-        class="uk-position-relative uk-visible-toggle uk-light products-store__slider"
-        tabindex="-1"
-        uk-slideshow="animation: fade; autoplay: true; autoplay-interval: 14000; max-height: 400;"
-      >
-        <ul class="uk-slideshow-items">
-          <li>
-            <div
-              class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center"
-            >
-              <img src="../components/common/img/pourover.jpg" alt uk-cover />
-            </div>
-          </li>
-          <li>
-            <div
-              class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center"
-            >
-              <img src="../components/common/img/pourover1.jpg" alt uk-cover />
-            </div>
-          </li>
-          <li>
-            <div
-              class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-center"
-            >
-              <img src="../components/common/img/unnamed.jpg" alt uk-cover />
-            </div>
-          </li>
-        </ul>
-      </div>
-      <the-selector :set_list="alternative" @get-list="getList" />
-    </article>
-    <the-shop-card :mass="list" />
+    <the-product-info />
+    <div class="products-store__filter-wrapper">
+      <the-filter class="products-store__filter-icon" />
+      <the-selector class="products-store__filter" :set_list="alternative" @get-list="getList" />
+    </div>
+    <the-shop-card class="products-store__shop-card" :mass="list" />
   </section>
 </template>
 <script>
-import { mapActions } from "vuex";
 import { alternative } from "../prod";
 import TheShopCard from "../components/common/TheShopCard";
 import TheSelector from "../components/common/TheSelectorFilter";
+import TheFilter from "../components/common/svg/TheFilter";
+import TheProductInfo from "../components/common/TheProductInfo";
 export default {
   name: "Alts",
   data() {
@@ -51,11 +24,12 @@ export default {
   },
   components: {
     TheShopCard,
-    TheSelector
+    TheSelector,
+    TheFilter,
+    TheProductInfo
   },
 
   methods: {
-    ...mapActions(["addToItems"]),
     getList(Flist) {
       this.list = [...Flist];
     }
@@ -67,16 +41,10 @@ export default {
   background-color: #dee2e6;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   &__info {
-    padding-bottom: 10px;
-    padding-top: 70px;
-    background-color: #dee2e6;
   }
-  &__slider {
-    width: 50%;
-    border-radius: 5px;
-    overflow: hidden;
-  }
+
   &__shop-list {
     padding: 20px;
     display: flex;
@@ -87,6 +55,16 @@ export default {
       flex-direction: row;
       flex-wrap: wrap;
     }
+  }
+  &__filter-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding: 32px;
+    background-color: $grey;
+    margin-bottom: 10px;
+  }
+  &__filter-icon {
+    margin-right: 15px;
   }
 }
 </style>
