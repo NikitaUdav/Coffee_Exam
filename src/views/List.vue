@@ -3,23 +3,22 @@
     <the-product-info />
     <div class="products-store__filter-wrapper">
       <the-filter class="products-store__filter-icon" />
-      <the-selector class="products-store__filter" :set_list="alternative" @get-list="getList" />
+      <the-selector class="products-store__filter" :set_list="list" @get-list="getList" />
     </div>
     <the-shop-card class="products-store__shop-card" :mass="list" />
   </section>
 </template>
 <script>
-import { alternative } from "../prod";
 import TheShopCard from "../components/common/TheShopCard";
 import TheSelector from "../components/common/TheSelectorFilter";
 import TheFilter from "../components/common/svg/TheFilter";
 import TheProductInfo from "../components/common/TheProductInfo";
 export default {
-  name: "Alts",
+  name: "List",
   data() {
     return {
-      alternative,
-      list: [...alternative]
+      router: this.$route.params.id,
+      list: []
     };
   },
   components: {
@@ -28,10 +27,19 @@ export default {
     TheFilter,
     TheProductInfo
   },
-
+  watch: {
+    $route: "changeRoute"
+  },
+  created() {
+    this.list = this.$store.state.store[this.router];
+  },
   methods: {
     getList(Flist) {
       this.list = [...Flist];
+    },
+    changeRoute() {
+      this.router = this.$route.params.id;
+      this.list = this.$store.state.store[this.router];
     }
   }
 };

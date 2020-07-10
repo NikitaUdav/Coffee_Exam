@@ -7,7 +7,7 @@
   >
     <option
       class="filter__option"
-      v-for="item in cats"
+      v-for="(item) in cats"
       :key="item.name"
       :value="item.value"
     >{{item.name}}</option>

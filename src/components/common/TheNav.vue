@@ -2,15 +2,15 @@
   <div id="nav" class="nav">
     <the-burger />
     <div class="nav__main-text">Coffee Shop</div>
-    <router-link class="nav__bag" to="/cart"
-      ><div class="nav__icon-wrapper">
+    <router-link class="nav__bag" to="/cart">
+      <div class="nav__icon-wrapper">
         <the-bag />
         <ul class="nav__count">
           <li id="nav__count-cart">{{ TotalPositions }}</li>
           <li>0</li>
         </ul>
-      </div></router-link
-    >
+      </div>
+    </router-link>
     <div id="offcanvas-overlay" uk-offcanvas="overlay: true">
       <div class="uk-offcanvas-bar">
         <button class="uk-offcanvas-close" type="button" uk-close></button>
@@ -20,35 +20,30 @@
             <router-link class="nav__text" to="/">Home</router-link>
           </li>
           <li class="nav__link">
-            <router-link class="nav__text" to="/about">coffee</router-link>
+            <router-link class="nav__text" :to="{name:'List', params: {id:'coffee'}}">coffee</router-link>
           </li>
           <li class="nav__link">
-            <router-link class="nav__text" to="/about">Keep Cup</router-link>
+            <router-link class="nav__text" :to="{name:'List', params: {id:'keepCup'}}">Keep Cup</router-link>
+          </li>
+
+          <li class="nav__link">
+            <router-link
+              class="nav__text"
+              :to="{name:'List', params: {id:'machine'}}"
+            >coffee machine</router-link>
           </li>
           <li class="nav__link">
-            <router-link class="nav__text" to="/about">sweets</router-link>
-          </li>
-          <li class="nav__link">
-            <router-link class="nav__text" to="/about"
-              >coffee machine</router-link
-            >
-          </li>
-          <li class="nav__link">
-            <router-link class="nav__text" to="/alts"
-              >alternative coffee</router-link
-            >
+            <router-link
+              class="nav__text"
+              :to="{name:'List', params: {id:'alternative'}}"
+            >alternative coffee</router-link>
           </li>
         </ul>
         <aside class="nav__info">
           <div class="nav__img-wrapper">
-            <img
-              src="https://glamusha.ru/uploads/articles/28/1nizkokalorijnyj_kofe.jpg"
-              alt
-            />
+            <img src="https://glamusha.ru/uploads/articles/28/1nizkokalorijnyj_kofe.jpg" alt />
           </div>
-          <h4 class="nav__tagline">
-            Make the right choice, listen to your heart...
-          </h4>
+          <h4 class="nav__tagline">Make the right choice, listen to your heart...</h4>
         </aside>
       </div>
     </div>
@@ -64,11 +59,11 @@ export default {
   components: {
     TheBurger,
     TheLogo,
-    TheBag,
+    TheBag
   },
   computed: {
-    ...mapGetters(["TotalPositions"]),
-  },
+    ...mapGetters(["TotalPositions"])
+  }
 };
 </script>
 <style lang="scss">

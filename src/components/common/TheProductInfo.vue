@@ -48,7 +48,6 @@ export default {
   padding: 10px;
   display: flex;
   flex-direction: column;
-
   justify-content: space-evenly;
   padding-bottom: 10px;
   padding-top: 90px;

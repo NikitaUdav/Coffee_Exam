@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Alts from "../views/Alts.vue";
+import List from "../views/List.vue";
 import Cart from "../views/Cart.vue";
 
 Vue.use(VueRouter);
@@ -13,9 +13,9 @@ const routes = [
     component: Home,
   },
   {
-    path: "/alts",
-    name: "Alts",
-    component: Alts,
+    path: "/List/:id",
+    name: "List",
+    component: List,
   },
   {
     path: "/cart",
