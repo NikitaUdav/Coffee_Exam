@@ -9,7 +9,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    store: [alternative, machine, keepCup, coffee],
+    store: { alternative, machine, keepCup, coffee },
     cart: {},
     delItem: {},
     TotalPositions: 0,

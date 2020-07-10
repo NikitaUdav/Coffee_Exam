@@ -30,6 +30,9 @@ export default {
       selected: "a-z"
     };
   },
+  created() {
+    this.filterBy();
+  },
   methods: {
     filterBy(option = this.selected) {
       const Flist = [...this.set_list];

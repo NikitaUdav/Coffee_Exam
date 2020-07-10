@@ -3,7 +3,7 @@
     <the-product-info />
     <div class="products-store__filter-wrapper">
       <the-filter class="products-store__filter-icon" />
-      <the-selector class="products-store__filter" :set_list="list" @get-list="getList" />
+      <the-selector ref="filt" class="products-store__filter" :set_list="list" @get-list="getList" />
     </div>
     <the-shop-card class="products-store__shop-card" :mass="list" />
   </section>
@@ -40,6 +40,9 @@ export default {
     changeRoute() {
       this.router = this.$route.params.id;
       this.list = this.$store.state.store[this.router];
+    },
+    filterUpdate() {
+      this.$refs.filt.filterBy();
     }
   }
 };
