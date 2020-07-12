@@ -3,9 +3,9 @@
     <the-product-info />
     <div class="products-store__filter-wrapper">
       <the-filter class="products-store__filter-icon" />
-      <the-selector ref="filt" class="products-store__filter" :set_list="list" @get-list="getList" />
+      <the-selector ref="filt" class="products-store__filter" v-model="sortBy" />
     </div>
-    <the-shop-card class="products-store__shop-card" :mass="list" />
+    <the-shop-card class="products-store__shop-card" :mass="sortedList" />
   </section>
 </template>
 <script>
@@ -18,7 +18,8 @@ export default {
   data() {
     return {
       router: this.$route.params.id,
-      list: []
+      list: [],
+      sortBy: "a-z"
     };
   },
   components: {
@@ -26,6 +27,14 @@ export default {
     TheSelector,
     TheFilter,
     TheProductInfo
+  },
+  computed: {
+    sortedList() {
+      switch (this.sortBy) {
+        default:
+          return this.list;
+      }
+    }
   },
   watch: {
     $route: "changeRoute"

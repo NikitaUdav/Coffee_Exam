@@ -1,10 +1,5 @@
 <template>
-  <select
-    class="filter"
-    v-model="selected"
-    @change="$emit(filterBy(selected))"
-    id="filter-selector"
-  >
+  <select class="filter" v-model="selected" id="filter-selector">
     <option
       class="filter__option"
       v-for="(item) in cats"
@@ -17,7 +12,7 @@
 export default {
   name: "TheSelector",
   props: {
-    set_list: Array
+    value: String
   },
   data() {
     return {
@@ -26,71 +21,19 @@ export default {
         { name: "z - a", value: "z-a" },
         { name: "low - high", value: "low-high" },
         { name: "high - low", value: "high-low" }
-      ],
-      selected: "a-z"
+      ]
     };
   },
-  created() {
-    this.filterBy();
-  },
-  methods: {
-    filterBy(option = this.selected) {
-      const Flist = [...this.set_list];
-      switch (option) {
-        case "a-z":
-          console.log("hi");
-          Flist.sort((a, b) => {
-            a.name.toLowerCase();
-            b.name.toLowerCase();
-            if (a.name < b.name) {
-              return -1;
-            }
-            if (a.name > b.name) {
-              return 1;
-            }
-            return 0;
-          });
-          break;
-        case "z-a":
-          console.log("z-a");
-          Flist.sort((a, b) => {
-            if (a.name > b.name) {
-              return -1;
-            }
-            if (a.name < b.name) {
-              return 1;
-            }
-            return 0;
-          });
-          break;
-        case "low-high":
-          console.log("z-a");
-          Flist.sort((a, b) => {
-            if (a.cost < b.cost) {
-              return -1;
-            }
-            if (a.cost > b.cost) {
-              return 1;
-            }
-            return 0;
-          });
-          break;
-        case "high-low":
-          console.log("z-a");
-          Flist.sort((a, b) => {
-            if (a.cost > b.cost) {
-              return -1;
-            }
-            if (a.cost < b.cost) {
-              return 1;
-            }
-            return 0;
-          });
-          break;
-        default:
-          break;
+
+  computed: {
+    selected: {
+      get() {
+        return this.value;
+      },
+      set(e) {
+        console.log(e);
+        this.$emit("input", e);
       }
-      this.$emit("get-list", Flist);
     }
   }
 };
