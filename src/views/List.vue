@@ -30,10 +30,60 @@ export default {
   },
   computed: {
     sortedList() {
+      const Flist = [...this.list];
       switch (this.sortBy) {
+        case "a-z":
+          Flist.sort((a, b) => {
+            a.name.toLowerCase();
+            b.name.toLowerCase();
+            if (a.name < b.name) {
+              return -1;
+            }
+            if (a.name > b.name) {
+              return 1;
+            }
+            return 0;
+          });
+          break;
+        case "z-a":
+          console.log("z-a");
+          Flist.sort((a, b) => {
+            if (a.name > b.name) {
+              return -1;
+            }
+            if (a.name < b.name) {
+              return 1;
+            }
+            return 0;
+          });
+          break;
+        case "low-high":
+          console.log("z-a");
+          Flist.sort((a, b) => {
+            if (a.cost < b.cost) {
+              return -1;
+            }
+            if (a.cost > b.cost) {
+              return 1;
+            }
+            return 0;
+          });
+          break;
+        case "high-low":
+          console.log("z-a");
+          Flist.sort((a, b) => {
+            if (a.cost > b.cost) {
+              return -1;
+            }
+            if (a.cost < b.cost) {
+              return 1;
+            }
+            return 0;
+          });
+          break;
         default:
-          return this.list;
       }
+      return Flist;
     }
   },
   watch: {
@@ -61,10 +111,7 @@ export default {
   background-color: #dee2e6;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  &__info {
-  }
-
+  min-height: 100vh;
   &__shop-list {
     padding: 20px;
     display: flex;
@@ -74,6 +121,7 @@ export default {
     @media screen and (min-width: $screen-tablet) {
       flex-direction: row;
       flex-wrap: wrap;
+      justify-content: space-around;
     }
   }
   &__filter-wrapper {

@@ -1,7 +1,7 @@
 <template>
   <section class="find-us">
     <img class="img" src="./img/map.jpg" alt="map" />
-    <h3 class="title find-us__title--main">find us</h3>
+    <h3 class="title--main find-us__title--main">find us</h3>
     <div class="find-us__container">
       <div class="find-us__map-wrapper">
         <the-place />
@@ -106,17 +106,12 @@ export default {
     @include text($H500, 400, $grey-light);
     margin: 0 auto;
     margin-bottom: 20px;
-    &--main {
-      margin: 0 auto;
-      background-color: rgba($dark, 0.8);
-      border-radius: 20px;
-      max-width: 300px;
-      @include text($H700, 700, $light);
-      margin-bottom: 60px;
-    }
     @media screen and (min-width: $screen-tablet) {
       text-align: start;
       margin: 0px 0px 20px 0px;
+    }
+    &--main {
+      margin-bottom: 60px;
     }
   }
   &__text {

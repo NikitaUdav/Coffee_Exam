@@ -32,7 +32,7 @@
           </svg>
         </li>
       </ul>
-      <span class="copyright">Copyright © 2018 - 2020 CoffeStores</span>
+      <span class="footer__copyright">Copyright © 2018 - 2020 CoffeStores</span>
     </div>
     <form class="footer__form" action>
       <h4 class="footer__title">Sign up for monthly newsletter</h4>
@@ -105,6 +105,9 @@ export default {
       height: 35px;
       margin-bottom: 10px;
     }
+  }
+  &__copyright {
+    @include text($H300, 400, $grey-light);
   }
 }
 .soc-list {

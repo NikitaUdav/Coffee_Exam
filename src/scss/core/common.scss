@@ -17,6 +17,14 @@ a {
 }
 .title {
   text-transform: uppercase;
+  &--main {
+    text-transform: uppercase;
+    padding: 5px 30px;
+    display: inline-block;
+    background-color: rgba($dark, 0.8);
+    border-radius: 20px;
+    @include text($H700, 400, $light);
+  }
 }
 .nodata {
   font-size: 40px;

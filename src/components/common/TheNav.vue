@@ -70,7 +70,7 @@ export default {
 $style: nav;
 .#{$style} {
   z-index: 10000;
-  padding: 15px;
+  padding: 15px 20px 15px 20px;
   display: flex;
   position: fixed;
   top: 0;

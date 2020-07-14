@@ -3,9 +3,10 @@
     <div class="cart__store">
       <header>
         <h2 class="title cart__title">Shopping Cart</h2>
-        <span class="undo" v-if="Object.keys(delItem).length > 0"
-          >Deleted. <a href="#" @click.prevent="revivalItem()">Restore</a></span
-        >
+        <span class="undo" v-if="Object.keys(delItem).length > 0">
+          Deleted.
+          <a href="#" @click.prevent="revivalItem()">Restore</a>
+        </span>
         <span v-else></span>
       </header>
       <div class="body">
@@ -21,9 +22,7 @@
               <img :src="item.img" :alt="item.img" />
             </div>
             <div class="product__details">
-              <h3 class="title">
-                {{ item.name }}
-              </h3>
+              <h3 class="title">{{ item.name }}</h3>
               <span class="product__price">$ {{ item.cost }}</span>
               <div class="product__actions">
                 <div class="product__quantity">
@@ -43,9 +42,7 @@
                   @mouseenter="selectItem(i)"
                   @mouseleave="delselectItem()"
                   @click.prevent="removeItem(item.id), delselectItem()"
-                >
-                  &#10005;
-                </button>
+                >&#10005;</button>
               </div>
             </div>
           </li>
@@ -63,14 +60,14 @@ export default {
   data() {
     return {
       cartOpen: null,
-      activeItem: null,
+      activeItem: null
     };
   },
   components: {
-    ThePayForm,
+    ThePayForm
   },
   computed: {
-    ...mapGetters(["cart", "TotalPositions", "delItem", "Total"]),
+    ...mapGetters(["cart", "TotalPositions", "delItem", "Total"])
   },
   methods: {
     ...mapActions(["removeItem", "chengeQt", "revivalItem"]),
@@ -82,8 +79,8 @@ export default {
     },
     delselectItem() {
       this.activeItem = null;
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">
@@ -95,7 +92,7 @@ export default {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  @media screen and (min-width: 840px) {
+  @media screen and (min-width: $screen-desktop) {
     flex-direction: row;
     align-items: flex-start;
   }
@@ -135,8 +132,7 @@ export default {
 
   &__store {
     width: 100%;
-
-    @media screen and (min-width: 840px) {
+    @media screen and (min-width: $screen-desktop) {
       width: 50%;
     }
   }
@@ -150,18 +146,30 @@ export default {
   position: relative;
   display: flex;
   border-bottom: 1px solid $palaceholder;
-  padding-bottom: 20px;
-  padding-right: 20px;
+  padding: 26px;
   margin-bottom: 20px;
+  align-items: center;
+  justify-content: space-between;
+  @media screen and (min-width: $screen-tablet) {
+    justify-content: start;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 0;
+    padding-top: 0;
+  }
   &__product-wrapper {
-    max-width: 100px;
+    display: flex;
+    max-width: 150px;
+    max-height: 200px;
     border-radius: 10px;
     overflow: hidden;
     border: 1px solid $darker;
     background-color: $white;
+    @media screen and (min-width: $screen-tablet) {
+      max-width: 200px;
+    }
   }
-  &__list {
-  }
+
   &__price {
     @include text($H350, 400, $dark);
   }
@@ -187,10 +195,20 @@ export default {
     top: 1px;
   }
   &__details {
-    width: 100%;
+    width: 45%;
     display: flex;
+    flex-direction: column;
+    text-align: center;
     align-items: center;
     justify-content: space-evenly;
+    :not(:last-child) {
+      margin-bottom: 24px;
+    }
+    @media screen and (min-width: $screen-tablet) {
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+    }
   }
 }
 

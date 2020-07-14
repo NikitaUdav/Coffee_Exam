@@ -189,15 +189,16 @@ export const alternative = [
 export const machine = [
   {
     id: 300,
-    name: "french press300",
+    name: "Saeco Spidem Trevi Chiara",
     cost: 100,
     description: {
       weight: "300g",
       material: "glass",
-      manufacturer: "USsssA",
-      capacity: "4 cup",
+      manufacturer: "USA",
+      virtues:
+        "Автоматическая кофемашина эспрессо. Используется только кофе в зернах.Кнопочная панель управления, светодиодная индикация.Кофемолка с регулировкой качества помола.Ручная регулировка объема воды на порцию.Съемное центральное устройство заваривания.Регулируемый по высоте телескопический диспенсер.Приготовление двух чашек одновременно.Трубка для подачи горячей воды и пара.Насадка «панарелло» для приготовления молочной пены.Материал корпуса: пластик ABS .Поворотное основание",
     },
-    img: require("@/components/common/img/alts/french(1).jpg"),
+    img: require("@/components/common/img/machine/machine(1).jpg"),
   },
 ];
 export const keepCup = [

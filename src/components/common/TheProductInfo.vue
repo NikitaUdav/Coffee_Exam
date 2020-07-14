@@ -31,10 +31,10 @@
       </ul>
     </div>
     <div class="shop-header__info">
-      <h3 class="title shop-header__title">Lorem, ipsum dolor.</h3>
+      <h3 class="title shop-header__title">FREE SHIPPING ON ORDERS $49+</h3>
       <p
         class="info__text"
-      >Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni perspiciatis mollitia magnam soluta, debitis consequatur temporibus quo ratione dicta similique porro dolor veniam facere accusamus, quibusdam esse harum repellat delectus!</p>
+      >Receive free domestic ground shipping on any order over $49.00. If you select Next Day or 2nd Day Air shipping, the cost of domestic US ground shipping will be credited toward your shipping costs. Offer is not valid in stores and does not apply to Peet's Cards, Monthly Coffee Tours, Subscriptions, previous purchases, or international shipments. Cannot be combined with any other offer or discount. Peets.com purchases are not eligible for Peetnik Rewards points.</p>
     </div>
   </article>
 </template>

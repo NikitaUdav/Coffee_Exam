@@ -1,6 +1,6 @@
 <template>
   <section class="advantages">
-    <h2 class="title advantages__title">Our advantages</h2>
+    <h2 class="title--main advantages__title">Our advantages</h2>
     <img class="img" src="./img/wood.jpg" alt />
     <ul class="advantages__list">
       <li class="advantages__item card">
@@ -62,7 +62,7 @@ export default {
   text-align: center;
   flex-direction: column;
   &__title {
-    @include text($H700, 700, $light);
+    @include text($H700, 400, $light);
     margin-bottom: 30px;
   }
   &__list {

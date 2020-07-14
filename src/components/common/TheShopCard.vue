@@ -29,6 +29,14 @@
               <span class="modal__value">{{value}}</span>
             </article>
           </li>
+          <li v-if="virtues.length > 1" class="modal__item">
+            <span class="modal__name">Virtues</span>
+            <ul>
+              <li class="modal__virtues" v-for="virt in virtues" :key="virt.id">
+                <span>- {{virt}}</span>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
@@ -44,15 +52,20 @@ export default {
   data() {
     return {
       modal: {},
-      modalName: ""
+      modalName: "",
+      virtues: []
     };
   },
   methods: {
     ...mapActions(["addToItems"]),
     calModal(item, name) {
+      const dot = ".";
       if (item) {
+        this.virtues = [...item.virtues.split(dot)];
+        delete item.virtues;
         this.modal = item;
         this.modalName = name;
+        this.virtues = [...item.virtues];
       } else {
         this.modalName = "No discription";
         this.modal = {};
@@ -63,7 +76,7 @@ export default {
 </script>
 <style lang="scss">
 .shop-card {
-  margin: 5px;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,19 +89,16 @@ export default {
   @media screen and (min-width: $screen-tablet) {
     transition: all ease 0.3s;
     width: 45%;
-    margin-right: 70px;
     &:hover {
       transform: scale(1.1);
     }
   }
   @media screen and (min-width: $screen-hd) {
-    width: 24%;
-    max-width: 350px;
-    margin-right: 30px;
+    max-width: 300px;
+    max-height: 500px;
   }
   @media screen and (min-width: $screen-retina) {
     width: 15%;
-    margin-right: 20px;
   }
   &__img-wrapper {
     background-color: white;
@@ -110,7 +120,23 @@ export default {
   &__inpunts {
     display: flex;
     width: 100%;
+    flex-direction: column;
     justify-content: space-between;
+    :first-child {
+      order: 3;
+    }
+    :last-child {
+      margin-bottom: 34px;
+    }
+    @media screen and (min-width: $screen-tablet) {
+      flex-direction: row;
+      :first-child {
+        order: -1;
+      }
+      :last-child {
+        margin-bottom: 0px;
+      }
+    }
   }
   &__button {
     @include text($H350, 700, $late);
@@ -122,7 +148,6 @@ export default {
     outline: none;
     text-transform: capitalize;
     @media screen and (min-width: $screen-tablet) {
-      max-width: 150px;
       &:hover {
         color: $light;
         background-color: $late;
@@ -135,6 +160,9 @@ export default {
   &__title {
     text-align: center;
     margin-bottom: 20px;
+  }
+  &__virtues {
+    padding: 5px;
   }
   &__item {
     display: flex;
