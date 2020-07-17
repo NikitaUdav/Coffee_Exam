@@ -171,6 +171,7 @@ export default {
   }
 
   &__price {
+    min-width: 100px;
     @include text($H350, 400, $dark);
   }
   &__quantity {
@@ -195,6 +196,7 @@ export default {
     top: 1px;
   }
   &__details {
+    padding: 10px;
     width: 45%;
     display: flex;
     flex-direction: column;

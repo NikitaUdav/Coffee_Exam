@@ -26,6 +26,11 @@ a {
     @include text($H700, 400, $light);
   }
 }
+.t-container {
+  max-width: $screen-retina;
+  width: 100%;
+  margin: 0 auto;
+}
 .nodata {
   font-size: 40px;
   transition: all ease 0.5s;

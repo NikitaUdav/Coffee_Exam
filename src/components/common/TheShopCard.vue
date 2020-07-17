@@ -65,7 +65,6 @@ export default {
         delete item.virtues;
         this.modal = item;
         this.modalName = name;
-        this.virtues = [...item.virtues];
       } else {
         this.modalName = "No discription";
         this.modal = {};
@@ -98,7 +97,7 @@ export default {
     max-height: 500px;
   }
   @media screen and (min-width: $screen-retina) {
-    width: 15%;
+    max-width: 320px;
   }
   &__img-wrapper {
     background-color: white;

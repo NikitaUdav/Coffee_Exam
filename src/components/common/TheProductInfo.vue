@@ -49,10 +49,11 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
   padding-bottom: 10px;
   padding-top: 90px;
   background-color: $grey-light;
-  @media screen and (min-width: $screen-tablet) {
+  @media screen and (min-width: 1234px) {
     flex-direction: row;
   }
   &__slider {
@@ -60,27 +61,28 @@ export default {
     border-radius: 20px;
     overflow: hidden;
     margin-bottom: 34px;
-    @media screen and (min-width: $screen-tablet) {
+    @media screen and (min-width: 1234px) {
       width: 47%;
       margin-bottom: 0px;
     }
   }
   &__info {
     @include text($H300, 400, $grey-light);
-    min-width: 47%;
+    min-width: 100%;
     display: flex;
     flex-direction: column;
     line-height: 30px;
     align-items: center;
     padding: 20px;
-    max-width: 600px;
     color: $grey-light;
     background-color: rgba($dark, 0.8);
     border-radius: 20px;
     margin-bottom: 30px;
-    @media screen and (min-width: $screen-tablet) {
+    @media screen and (min-width: 1234px) {
       margin-bottom: 0px;
       align-items: flex-start;
+      min-width: 47%;
+      max-width: 600px;
     }
   }
   &__title {

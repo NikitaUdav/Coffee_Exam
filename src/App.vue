@@ -15,14 +15,14 @@ export default {
   name: "App",
   components: {
     TheNav,
-    TheFooter,
+    TheFooter
   },
   state: reset(),
   mutations: {
     reset(state) {
       Object.assign(state, reset());
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss"></style>

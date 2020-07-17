@@ -1,10 +1,13 @@
 <template>
   <section class="products-store">
-    <the-product-info />
+    <div class="t-container">
+      <the-product-info />
+    </div>
     <div class="products-store__filter-wrapper">
       <the-filter class="products-store__filter-icon" />
       <the-selector ref="filt" class="products-store__filter" v-model="sortBy" />
     </div>
+
     <the-shop-card class="products-store__shop-card" :mass="sortedList" />
   </section>
 </template>
@@ -121,7 +124,7 @@ export default {
     @media screen and (min-width: $screen-tablet) {
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: space-around;
+      justify-content: space-evenly;
     }
   }
   &__filter-wrapper {

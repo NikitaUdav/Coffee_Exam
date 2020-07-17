@@ -25,7 +25,6 @@
           <li class="nav__link">
             <router-link class="nav__text" :to="{name:'List', params: {id:'keepCup'}}">Keep Cup</router-link>
           </li>
-
           <li class="nav__link">
             <router-link
               class="nav__text"
