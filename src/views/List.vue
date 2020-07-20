@@ -49,7 +49,6 @@ export default {
           });
           break;
         case "z-a":
-          console.log("z-a");
           Flist.sort((a, b) => {
             if (a.name > b.name) {
               return -1;
@@ -61,7 +60,6 @@ export default {
           });
           break;
         case "low-high":
-          console.log("z-a");
           Flist.sort((a, b) => {
             if (a.cost < b.cost) {
               return -1;
@@ -73,7 +71,6 @@ export default {
           });
           break;
         case "high-low":
-          console.log("z-a");
           Flist.sort((a, b) => {
             if (a.cost > b.cost) {
               return -1;

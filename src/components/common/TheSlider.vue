@@ -57,7 +57,7 @@
             </li>
             <li class="glide__slide">
               <div class="glide__img-wrapper">
-                <img class="img glide__img" src="./img/cip1.jpg" alt="picture" />
+                <img class="img glide__img cover" src="./img/cip1.jpg" alt="picture" />
               </div>
               <h3 class="glide__title title">Alternative coffee</h3>
               <div class="glide__inputs">
@@ -75,14 +75,14 @@ import Glide from "@glidejs/glide";
 const config = {
   type: "carousel",
   startAt: 0,
-  gap: 60,
+  gap: 100,
   perView: 3,
   focusAt: 0,
   animationDuration: 500,
   autoplay: 5000,
   hoverpause: true,
   breakpoints: {
-    1270: {
+    1280: {
       perView: 2
     },
     900: {
@@ -109,7 +109,7 @@ export default {
 .our-products {
   padding-top: 30px;
   position: relative;
-  min-height: 70vh;
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -162,11 +162,15 @@ $style: glide;
     background-color: white;
     position: relative;
     width: 100%;
-    height: 0px;
-    padding-bottom: 100%;
+    max-width: 500px;
+    height: 500px;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 20px;
+    @media screen and (min-width: $screen-desktop-large) {
+      max-width: 350px;
+      height: 350px;
+    }
   }
   &__img {
     z-index: 10 !important;

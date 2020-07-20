@@ -30,11 +30,14 @@
                     class="product__quantity"
                     name="quantity"
                     id="number"
-                    @change="chengeQt()"
+                    @change="item.qt = Math.max(Math.min(Math.round(item.qt), 100), 1),chengeQt()"
                     v-model.number="item.qt"
                     type="number"
+                    maxlength="3"
+                    step="1"
                     min="1"
                     max="100"
+                    onkeyup="this.value = this.value.replace(/[^\d]/g,'1');"
                   />
                 </div>
                 <button
