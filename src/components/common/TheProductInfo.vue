@@ -32,15 +32,21 @@
     </div>
     <div class="shop-header__info">
       <h3 class="title shop-header__title">FREE SHIPPING ON ORDERS $49+</h3>
-      <p
-        class="info__text"
-      >Receive free domestic ground shipping on any order over $49.00. If you select Next Day or 2nd Day Air shipping, the cost of domestic US ground shipping will be credited toward your shipping costs. Offer is not valid in stores and does not apply to Peet's Cards, Monthly Coffee Tours, Subscriptions, previous purchases, or international shipments. Cannot be combined with any other offer or discount. Peets.com purchases are not eligible for Peetnik Rewards points.</p>
+      <p class="info__text">
+        Receive free domestic ground shipping on any order over $49.00. If you
+        select Next Day or 2nd Day Air shipping, the cost of domestic US ground
+        shipping will be credited toward your shipping costs. Offer is not valid
+        in stores and does not apply to Peet's Cards, Monthly Coffee Tours,
+        Subscriptions, previous purchases, or international shipments. Cannot be
+        combined with any other offer or discount. Peets.com purchases are not
+        eligible for Peetnik Rewards points.
+      </p>
     </div>
   </article>
 </template>
 <script>
 export default {
-  name: "TheProductInfo"
+  name: "TheProductInfo",
 };
 </script>
 <style lang="scss">
@@ -51,7 +57,6 @@ export default {
   justify-content: space-evenly;
   align-items: center;
   padding-bottom: 10px;
-  padding-top: 90px;
   background-color: $grey-light;
   @media screen and (min-width: 1234px) {
     flex-direction: row;

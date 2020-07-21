@@ -30,7 +30,13 @@
                     class="product__quantity"
                     name="quantity"
                     id="number"
-                    @change="item.qt = Math.max(Math.min(Math.round(item.qt), 100), 1),chengeQt()"
+                    @change="
+                      (item.qt = Math.max(
+                        Math.min(Math.round(item.qt), 100),
+                        1
+                      )),
+                        chengeQt()
+                    "
                     v-model.number="item.qt"
                     type="number"
                     maxlength="3"
@@ -45,7 +51,9 @@
                   @mouseenter="selectItem(i)"
                   @mouseleave="delselectItem()"
                   @click.prevent="removeItem(item.id), delselectItem()"
-                >&#10005;</button>
+                >
+                  &#10005;
+                </button>
               </div>
             </div>
           </li>
@@ -63,14 +71,14 @@ export default {
   data() {
     return {
       cartOpen: null,
-      activeItem: null
+      activeItem: null,
     };
   },
   components: {
-    ThePayForm
+    ThePayForm,
   },
   computed: {
-    ...mapGetters(["cart", "TotalPositions", "delItem", "Total"])
+    ...mapGetters(["cart", "TotalPositions", "delItem", "Total"]),
   },
   methods: {
     ...mapActions(["removeItem", "chengeQt", "revivalItem"]),
@@ -82,15 +90,14 @@ export default {
     },
     delselectItem() {
       this.activeItem = null;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
 .cart {
   padding: 10px;
   padding-bottom: 30px;
-  padding-top: 87px;
   display: flex;
   flex-direction: column;
   align-items: center;

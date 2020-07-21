@@ -1,29 +1,51 @@
 <template>
   <section class="advantages">
-    <h2 class="title--main advantages__title">Our advantages</h2>
+    <h2
+      uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.4"
+      class="title--main advantages__title"
+    >
+      Our advantages
+    </h2>
     <img class="img" src="./img/wood.jpg" alt />
     <ul class="advantages__list">
-      <li class="advantages__item card">
+      <li
+        uk-parallax="opacity: 0,1; x: -10,0; viewport: 0.4"
+        class="advantages__item card"
+      >
         <the-service />
         <h3 class="title card__title">Service</h3>
         <p class="card__text">Highest quality and friendly</p>
       </li>
-      <li class="advantages__item card">
+      <li
+        uk-parallax="opacity: 0,1; y: -100,0; x:-100,0; viewport: 0.4"
+        class="advantages__item card"
+      >
         <the-thermometer />
         <h3 class="title card__title">Health</h3>
-        <p class="card__text">daily we measure the temperature of our employees</p>
+        <p class="card__text">
+          daily we measure the temperature of our employees
+        </p>
       </li>
-      <li class="advantages__item card">
+      <li
+        uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.3"
+        class="advantages__item card"
+      >
         <the-cleaning />
         <h3 class="title card__title">Cleaning</h3>
         <p class="card__text">Disinfect the entire room every 2 hours</p>
       </li>
-      <li class="advantages__item card">
+      <li
+        uk-parallax="opacity: 0,1; y: -100,0; x:100,0; viewport: 0.4"
+        class="advantages__item card"
+      >
         <the-cake />
         <h3 class="title card__title">Kitchen</h3>
         <p class="card__text">Always fresh pastries and desserts for coffee</p>
       </li>
-      <li class="advantages__item card">
+      <li
+        uk-parallax="opacity: 0,1; x: 10,0; viewport: 0.4"
+        class="advantages__item card"
+      >
         <the-car />
         <h3 class="title card__title">Delivery</h3>
         <p class="card__text">The fastest delivery in the city</p>
@@ -44,8 +66,8 @@ export default {
     TheThermometer,
     TheCleaning,
     TheCake,
-    TheCar
-  }
+    TheCar,
+  },
 };
 </script>
 <style lang="scss">

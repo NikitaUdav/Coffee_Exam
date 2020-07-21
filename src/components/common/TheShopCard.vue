@@ -1,39 +1,62 @@
 <template>
   <div>
     <ul class="products-store__shop-list">
-      <li v-for="item in mass" :key="item.id" class="shop-card">
+      <li
+        v-for="item in mass"
+        :key="item.id"
+        class="shop-card "
+        uk-parallax="opacity: 0,1; y: 150,0; viewport: 0.3"
+      >
         <div class="shop-card__img-wrapper">
           <img class="imgs" :src="item.img" :alt="item.img" />
         </div>
+
         <h3 class="shop-card__title title">{{ item.name }}</h3>
         <span class="shop-card__price">${{ item.cost }}</span>
         <div class="shop-card__inpunts">
-          <button @click="addToItems(item)" class="shop-card__button">add to cart</button>
+          <button
+            @click="addToItems(item), notification(item.name)"
+            class="shop-card__button"
+          >
+            add to cart
+          </button>
+
           <button
             @click="calModal(item.description, item.name)"
             class="shop-card__button"
             href="#modal-center"
             uk-toggle
-          >info</button>
+          >
+            info
+          </button>
         </div>
       </li>
     </ul>
+
     <div id="modal-center" class="uk-flex-top" uk-modal>
       <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-        <button class="uk-modal-close-default modal" type="button" uk-close></button>
-        <h3 class="title modal__title">{{modalName}}</h3>
+        <button
+          class="uk-modal-close-default modal"
+          type="button"
+          uk-close
+        ></button>
+        <h3 class="title modal__title">{{ modalName }}</h3>
         <ul class="modal__list">
-          <li v-for="(value, name) in modal" :key="value.id" class="modal__item">
+          <li
+            v-for="(value, name) in modal"
+            :key="value.id"
+            class="modal__item"
+          >
             <article class="modal__article">
-              <span class="modal__name">{{name}}</span>
-              <span class="modal__value">{{value}}</span>
+              <span class="modal__name">{{ name }}</span>
+              <span class="modal__value">{{ value }}</span>
             </article>
           </li>
           <li v-if="virtues.length > 1" class="modal__item">
             <span class="modal__name">Virtues</span>
             <ul>
               <li class="modal__virtues" v-for="virt in virtues" :key="virt.id">
-                <span>- {{virt}}</span>
+                <span>- {{ virt }}</span>
               </li>
             </ul>
           </li>
@@ -44,20 +67,29 @@
 </template>
 <script>
 import { mapActions } from "vuex";
+import UIkit from "uikit";
 export default {
   name: "TheShopCard",
   props: {
-    mass: Array
+    mass: Array,
   },
   data() {
     return {
       modal: {},
       modalName: "",
-      virtues: []
+      virtues: [],
     };
   },
   methods: {
     ...mapActions(["addToItems"]),
+    notification(name) {
+      UIkit.notification({
+        message: `${name} added to cart`,
+        status: "success",
+        pos: "top-right",
+        timeout: 5000,
+      });
+    },
     calModal(item, name) {
       const dot = ".";
       if (item) {
@@ -69,8 +101,8 @@ export default {
         this.modalName = "No discription";
         this.modal = {};
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -85,11 +117,12 @@ export default {
   max-width: 350px;
   border-radius: 5px;
   margin-bottom: 50px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   @media screen and (min-width: $screen-tablet) {
     transition: all ease 0.3s;
     width: 45%;
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.1) !important;
     }
   }
   @media screen and (min-width: $screen-hd) {
@@ -192,5 +225,8 @@ export default {
   max-height: 300px;
   max-width: 100%;
   vertical-align: middle;
+}
+.uk-notification-message {
+  background-color: $grey !important;
 }
 </style>

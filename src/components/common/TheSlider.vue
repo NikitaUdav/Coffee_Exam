@@ -1,67 +1,98 @@
 <template>
   <div class="our-products">
     <img class="img" src="./img/warehouse.jpg" alt />
-    <h3 class="title--main our-products__title">our products</h3>
+    <h3
+      class="title--main our-products__title"
+      uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.4"
+    >
+      our products
+    </h3>
     <div class="glide__wrapper">
       <div class="glide">
         <div data-glide-el="track" class="glide__track">
           <ul class="glide__slides">
             <li class="glide__slide">
               <div class="glide__img-wrapper">
-                <img class="img glide__img" src="./img/coffe1.png" alt="picture" />
+                <img
+                  class="img glide__img"
+                  src="./img/coffe1.png"
+                  alt="picture"
+                />
               </div>
               <h3 class="glide__title title">Coffee</h3>
               <div class="glide__inputs">
                 <router-link
                   class="our-products__link"
-                  :to="{name:'List', params: {id:'coffee'}}"
-                >More</router-link>
+                  :to="{ name: 'List', params: { id: 'coffee' } }"
+                  >More</router-link
+                >
               </div>
             </li>
             <li class="glide__slide">
               <div class="glide__img-wrapper">
-                <img class="img glide__img" src="./img/cip1.jpg" alt="picture" />
+                <img
+                  class="img glide__img"
+                  src="./img/cip1.jpg"
+                  alt="picture"
+                />
               </div>
               <h3 class="glide__title title">Keep Cup</h3>
               <div class="glide__inputs">
                 <router-link
                   class="our-products__link"
-                  :to="{name:'List', params: {id:'keepCup'}}"
-                >More</router-link>
+                  :to="{ name: 'List', params: { id: 'keepCup' } }"
+                  >More</router-link
+                >
               </div>
             </li>
 
             <li class="glide__slide">
               <div class="glide__img-wrapper">
-                <img class="img glide__img" src="./img/french1.jpg" alt="picture" />
+                <img
+                  class="img glide__img"
+                  src="./img/french1.jpg"
+                  alt="picture"
+                />
               </div>
               <h3 class="glide__title title">Alternative coffee</h3>
               <div class="glide__inputs">
                 <router-link
                   class="our-products__link"
-                  :to="{name:'List', params: {id:'alternative'}}"
-                >More</router-link>
+                  :to="{ name: 'List', params: { id: 'alternative' } }"
+                  >More</router-link
+                >
               </div>
             </li>
             <li class="glide__slide">
               <div class="glide__img-wrapper">
-                <img class="img glide__img" src="./img/machine1.png" alt="picture" />
+                <img
+                  class="img glide__img"
+                  src="./img/machine1.png"
+                  alt="picture"
+                />
               </div>
               <h3 class="glide__title title">Coffee Machine</h3>
               <div class="glide__inputs">
                 <router-link
                   class="our-products__link"
-                  :to="{name:'List', params: {id:'machine'}}"
-                >More</router-link>
+                  :to="{ name: 'List', params: { id: 'machine' } }"
+                  >More</router-link
+                >
               </div>
             </li>
             <li class="glide__slide">
               <div class="glide__img-wrapper">
-                <img class="img glide__img cover" src="./img/cip1.jpg" alt="picture" />
+                <img
+                  class="img glide__img cover"
+                  src="./img/cip1.jpg"
+                  alt="picture"
+                />
               </div>
               <h3 class="glide__title title">Alternative coffee</h3>
               <div class="glide__inputs">
-                <router-link class="our-products__link" to="/alts">More</router-link>
+                <router-link class="our-products__link" to="/alts"
+                  >More</router-link
+                >
               </div>
             </li>
           </ul>
@@ -83,18 +114,18 @@ const config = {
   hoverpause: true,
   breakpoints: {
     1280: {
-      perView: 2
+      perView: 2,
     },
     900: {
-      perView: 1
-    }
-  }
+      perView: 1,
+    },
+  },
 };
 export default {
   name: "TheSlider",
   data() {
     return {
-      slider: null
+      slider: null,
     };
   },
   mounted() {
@@ -102,7 +133,7 @@ export default {
   },
   beforeDestroy() {
     this.slider.destroy();
-  }
+  },
 };
 </script>
 <style lang="scss">

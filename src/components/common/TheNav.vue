@@ -1,5 +1,9 @@
 <template>
-  <div id="nav" class="nav">
+  <div
+    class="nav"
+    uk-sticky="top: 400; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up; show-on-up: true"
+    id="nav"
+  >
     <the-burger />
     <div class="nav__main-text">Coffee Shop</div>
     <router-link class="nav__bag" to="/cart">
@@ -11,38 +15,53 @@
         </ul>
       </div>
     </router-link>
-    <div id="offcanvas-overlay" uk-offcanvas="overlay: true">
+    <div ref="overlay" id="offcanvas-overlay" uk-offcanvas="overlay: true">
       <div class="uk-offcanvas-bar">
         <button class="uk-offcanvas-close" type="button" uk-close></button>
         <the-logo class="nav__logo" />
         <ul class="nav__list">
-          <li class="nav__link">
+          <li @click="hideOverlay()" class="nav__link">
             <router-link class="nav__text" to="/">Home</router-link>
           </li>
-          <li class="nav__link">
-            <router-link class="nav__text" :to="{name:'List', params: {id:'coffee'}}">coffee</router-link>
-          </li>
-          <li class="nav__link">
-            <router-link class="nav__text" :to="{name:'List', params: {id:'keepCup'}}">Keep Cup</router-link>
-          </li>
-          <li class="nav__link">
+          <li @click="hideOverlay()" class="nav__link">
             <router-link
               class="nav__text"
-              :to="{name:'List', params: {id:'machine'}}"
-            >coffee machine</router-link>
+              :to="{ name: 'List', params: { id: 'coffee' } }"
+              >coffee</router-link
+            >
           </li>
-          <li class="nav__link">
+          <li @click="hideOverlay()" class="nav__link">
             <router-link
               class="nav__text"
-              :to="{name:'List', params: {id:'alternative'}}"
-            >alternative coffee</router-link>
+              :to="{ name: 'List', params: { id: 'keepCup' } }"
+              >Keep Cup</router-link
+            >
+          </li>
+          <li @click="hideOverlay()" class="nav__link">
+            <router-link
+              class="nav__text"
+              :to="{ name: 'List', params: { id: 'machine' } }"
+              >coffee machine</router-link
+            >
+          </li>
+          <li @click="hideOverlay()" class="nav__link">
+            <router-link
+              class="nav__text"
+              :to="{ name: 'List', params: { id: 'alternative' } }"
+              >alternative coffee</router-link
+            >
           </li>
         </ul>
         <aside class="nav__info">
           <div class="nav__img-wrapper">
-            <img src="https://glamusha.ru/uploads/articles/28/1nizkokalorijnyj_kofe.jpg" alt />
+            <img
+              src="https://glamusha.ru/uploads/articles/28/1nizkokalorijnyj_kofe.jpg"
+              alt
+            />
           </div>
-          <h4 class="nav__tagline">Make the right choice, listen to your heart...</h4>
+          <h4 class="nav__tagline">
+            Make the right choice, listen to your heart...
+          </h4>
         </aside>
       </div>
     </div>
@@ -53,25 +72,32 @@ import TheBurger from "./TheBurger";
 import TheLogo from "./svg/TheLogo";
 import TheBag from "./svg/TheBag";
 import { mapGetters } from "vuex";
+import UIkit from "uikit";
 export default {
   name: "TheNav",
   components: {
     TheBurger,
     TheLogo,
-    TheBag
+    TheBag,
   },
   computed: {
-    ...mapGetters(["TotalPositions"])
-  }
+    ...mapGetters(["TotalPositions"]),
+  },
+  methods: {
+    hideOverlay() {
+      UIkit.offcanvas(this.$refs.overlay).hide();
+      console.log("hide");
+    },
+  },
 };
 </script>
 <style lang="scss">
 $style: nav;
 .#{$style} {
-  z-index: 10000;
+  z-index: 1000;
+  position: relative;
   padding: 15px 20px 15px 20px;
   display: flex;
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -162,8 +188,12 @@ $style: nav;
   }
 }
 .uk-offcanvas-bar {
+  z-index: 10000;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.zindex {
+  z-index: 10000;
 }
 </style>

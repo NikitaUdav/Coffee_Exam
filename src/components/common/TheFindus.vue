@@ -1,16 +1,33 @@
 <template>
   <section class="find-us">
     <img class="img" src="./img/map.jpg" alt="map" />
-    <h3 class="title--main find-us__title--main">find us</h3>
+    <h3
+      class="title--main find-us__title--main"
+      uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.4"
+    >
+      find us
+    </h3>
     <div class="find-us__container">
-      <div class="find-us__map-wrapper">
+      <div
+        class="find-us__map-wrapper"
+        uk-parallax="opacity: 0,1; x: -10,0; viewport: 0.4"
+      >
         <the-place />
       </div>
-      <article class="find-us__article">
-        <h3 class="title find-us__title">WELL HELLO THERE!</h3>
-        <p
-          class="find-us__text find-us__text--main"
-        >Welcome to our hometown, located in the heart of Warwickshire. We are walking along the road from Shakespeare's birthplace, and we have enough castles here to make Americans blush. Despite its rich history, we are also at the forefront of digital creativity and are part of a thriving community of technology and gaming companies in the area.</p>
+      <article
+        class="find-us__article"
+        uk-parallax="opacity: 0,1; x: 10,0; viewport: 0.4"
+      >
+        <h3 class="title find-us__title">
+          WELL HELLO THERE!
+        </h3>
+        <p class="find-us__text find-us__text--main">
+          Welcome to our hometown, located in the heart of Warwickshire. We are
+          walking along the road from Shakespeare's birthplace, and we have
+          enough castles here to make Americans blush. Despite its rich history,
+          we are also at the forefront of digital creativity and are part of a
+          thriving community of technology and gaming companies in the area.
+        </p>
         <h3 class="title find-us__title">Contact us</h3>
         <ul class="find-us__info-list">
           <li class="find-us__info-item">
@@ -34,7 +51,7 @@
 import ThePlace from "./ThePlace";
 export default {
   name: "TheFindus",
-  components: { ThePlace }
+  components: { ThePlace },
 };
 </script>
 <style lang="scss">
