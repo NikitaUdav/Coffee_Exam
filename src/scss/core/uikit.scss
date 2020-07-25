@@ -5907,7 +5907,7 @@ ul.uk-nav-sub {
 .uk-notification {
   /* 1 */
   position: fixed;
-  top: 10px;
+  top: 90px;
   left: 10px;
   z-index: 1040;
   /* 2 */
@@ -5952,6 +5952,7 @@ ul.uk-nav-sub {
   color: #666;
   font-size: 1.25rem;
   line-height: 1.4;
+  border-radius: 5px;
   cursor: pointer;
 }
 * + .uk-notification-message {

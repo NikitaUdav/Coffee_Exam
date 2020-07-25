@@ -1,28 +1,21 @@
 <template>
-  <form action="" class="pay-form">
+  <form id="appForm" action="" class="pay-form">
     <h2 class="title pay-form__title">Contact information</h2>
     <ul class="pay-form__list">
-      <li class="pay-form__item">
-        <h4 class="pay-form__uper-title">First name</h4>
-        <input class="pay-form__input" type="text" required />
-      </li>
-      <li class="pay-form__item">
-        <h4 class="pay-form__uper-title">Last name</h4>
-        <input class="pay-form__input" type="text" required />
-      </li>
-      <li class="pay-form__item">
-        <h4 class="pay-form__uper-title">Phone number</h4>
-        <input name="phone" class="pay-form__input" type="tel" required />
-      </li>
-      <li class="pay-form__item">
-        <h4 class="pay-form__uper-title">Email</h4>
-        <input name="email" class="pay-form__input" type="email" required />
-      </li>
-      <li class="pay-form__item">
-        <h4 class="pay-form__uper-title">Location</h4>
-        <input class="pay-form__input" type="text" required />
+      <li class="pay-form__item" v-for="(item, index) in form" :key="item.id">
+        <label class="pay-form__uper-title">{{ item.name }}</label>
+        <input
+          class="pay-form__input"
+          :type="item.type"
+          :placeholder="item.placeHolder"
+          :value="item.value"
+          @input="onInput(index, $event.target.value)"
+          :maxlength="item.maxl"
+          required
+        />
       </li>
     </ul>
+
     <button class="pay-form__button" type="submit">
       <span class="pay-form__price">To pay ${{ Total }}</span>
     </button>
@@ -34,6 +27,41 @@ export default {
   name: "ThePayForm",
   computed: {
     ...mapGetters(["Total"]),
+  },
+  data() {
+    return {
+      name: "",
+      phone: 0,
+      form: [
+        {
+          id: "firstName",
+          name: "First name",
+          type: "text",
+          placeHolder: "Ivan",
+          value: " ",
+          pattern: "^[a-z ,.'-]+$/i",
+          maxl: 12,
+        },
+        {
+          id: "phone",
+          name: "Phone",
+          type: "nuber",
+          placeHolder: "+ (   )",
+          value: " ",
+          maxl: 12,
+        },
+      ],
+    };
+  },
+  methods: {
+    onInput(index, value) {
+      let data = this.form[index];
+      //let control = this.controls[index];
+
+      data.value = value;
+      // control.error = !data.pattern.test(value);
+      // control.activated = true;
+    },
   },
 };
 </script>
@@ -50,8 +78,11 @@ export default {
     margin-bottom: 20px;
   }
   &__list {
-    width: 50%;
+    width: 100%;
     margin-bottom: 40px;
+    @media screen and (min-width: 840px) {
+      width: 50%;
+    }
   }
   &__item {
     padding: 5px;

@@ -78,6 +78,7 @@ export default {
     width: 100%;
     min-height: 150px;
     max-width: 850px;
+    padding: 32px;
   }
 
   &::before {
