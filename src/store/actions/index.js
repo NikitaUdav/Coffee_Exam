@@ -3,4 +3,5 @@ export default {
   removeItem: ({ commit }, item) => commit("REMOVE_ITEM", item),
   chengeQt: ({ commit }) => commit("CHENGE_QT"),
   revivalItem: ({ commit }) => commit("REVIVA"),
+  clearCart: ({ commit }) => commit("CLEAR_CART"),
 };

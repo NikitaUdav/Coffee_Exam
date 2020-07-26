@@ -1,66 +1,71 @@
 <template>
   <section class="cart">
-    <div class="cart__store">
-      <header>
-        <h2 class="title cart__title">Shopping Cart</h2>
-        <span class="undo" v-if="Object.keys(delItem).length > 0">
-          Deleted.
-          <a href="#" @click.prevent="revivalItem()">Restore</a>
-        </span>
-        <span v-else></span>
-      </header>
-      <div class="body">
-        <ul class="cart__list">
-          <li
-            :id="item.id"
-            class="cart__product product"
-            :class="{ red: i === activeItem }"
-            v-for="(item, i) in cart"
-            v-bind:key="item.id"
-          >
-            <div class="product__product-wrapper">
-              <img :src="item.img" :alt="item.img" />
-            </div>
-            <div class="product__details">
-              <h3 class="title">{{ item.name }}</h3>
-              <span class="product__price">$ {{ item.cost }}</span>
-              <div class="product__actions">
-                <div class="product__quantity">
-                  <input
-                    class="product__quantity"
-                    name="quantity"
-                    id="number"
-                    @change="
-                      (item.qt = Math.max(
-                        Math.min(Math.round(item.qt), 100),
-                        1
-                      )),
-                        chengeQt()
-                    "
-                    v-model.number="item.qt"
-                    type="number"
-                    maxlength="3"
-                    step="1"
-                    min="1"
-                    max="100"
-                    onkeyup="this.value = this.value.replace(/[^\d]/g,'1');"
-                  />
-                </div>
-                <button
-                  class="product__delete-item"
-                  @mouseenter="selectItem(i)"
-                  @mouseleave="delselectItem()"
-                  @click.prevent="removeItem(item.id), delselectItem()"
-                >
-                  &#10005;
-                </button>
+    <h1 class="title cart__empty" v-if="this.TotalPositions <= 0">
+      Cart Empty
+    </h1>
+    <div class="cart__container" v-else>
+      <div class="cart__store">
+        <header>
+          <h2 class="title cart__title">Shopping Cart</h2>
+          <span class="undo" v-if="Object.keys(delItem).length > 0">
+            Deleted.
+            <a href="#" @click.prevent="revivalItem()">Restore</a>
+          </span>
+          <span v-else></span>
+        </header>
+        <div class="body">
+          <ul class="cart__list">
+            <li
+              :id="item.id"
+              class="cart__product product"
+              :class="{ red: i === activeItem }"
+              v-for="(item, i) in cart"
+              v-bind:key="item.id"
+            >
+              <div class="product__product-wrapper">
+                <img :src="item.img" :alt="item.img" />
               </div>
-            </div>
-          </li>
-        </ul>
+              <div class="product__details">
+                <h3 class="title">{{ item.name }}</h3>
+                <span class="product__price">$ {{ item.cost }}</span>
+                <div class="product__actions">
+                  <div class="product__quantity">
+                    <input
+                      class="product__quantity"
+                      name="quantity"
+                      id="number"
+                      @change="
+                        (item.qt = Math.max(
+                          Math.min(Math.round(item.qt), 100),
+                          1
+                        )),
+                          chengeQt()
+                      "
+                      v-model.number="item.qt"
+                      type="number"
+                      maxlength="3"
+                      step="1"
+                      min="1"
+                      max="100"
+                      onkeyup="this.value = this.value.replace(/[^\d]/g,'1');"
+                    />
+                  </div>
+                  <button
+                    class="product__delete-item"
+                    @mouseenter="selectItem(i)"
+                    @mouseleave="delselectItem()"
+                    @click.prevent="removeItem(item.id), delselectItem()"
+                  >
+                    &#10005;
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
+      <the-pay-form />
     </div>
-    <the-pay-form />
   </section>
 </template>
 <script>
@@ -82,9 +87,6 @@ export default {
   },
   methods: {
     ...mapActions(["removeItem", "chengeQt", "revivalItem"]),
-    showCart(event) {
-      console.log(event);
-    },
     selectItem(i) {
       this.activeItem = i;
     },
@@ -102,10 +104,6 @@ export default {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  @media screen and (min-width: $screen-desktop) {
-    flex-direction: row;
-    align-items: flex-start;
-  }
   background: rgba(217, 217, 217, 1);
   background: -moz-linear-gradient(
     top,
@@ -139,7 +137,17 @@ export default {
     rgba(245, 245, 245, 1) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d9d9d9', endColorstr='#f5f5f5', GradientType=0 );
-
+  &__empty {
+    margin: auto;
+  }
+  &__container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    @media screen and (min-width: $screen-desktop) {
+      flex-direction: row;
+    }
+  }
   &__store {
     width: 100%;
     @media screen and (min-width: $screen-desktop) {
@@ -175,9 +183,6 @@ export default {
     overflow: hidden;
     border: 1px solid $darker;
     background-color: $white;
-    @media screen and (min-width: $screen-tablet) {
-      max-width: 200px;
-    }
   }
 
   &__price {

@@ -29,4 +29,9 @@ export default {
     state.TotalPositions = calculateTotal(state.cart);
     state.delItem = {};
   },
+  CLEAR_CART: (state) => {
+    state.cart = {};
+    state.Total = 0;
+    state.TotalPositions = 0;
+  },
 };
