@@ -90,7 +90,7 @@ export default {
           value: "",
           mask: "+###(##)###-##-##",
           pattern: "[0-9]",
-          maxl: 12,
+          maxl: 17,
         },
       ],
       controls: [],
