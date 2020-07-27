@@ -115,6 +115,7 @@ export default {
   background-color: $grey;
   width: 95%;
   max-width: 350px;
+  margin-right: 20px;
   border-radius: 5px;
   margin-bottom: 50px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);

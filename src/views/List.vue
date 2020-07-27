@@ -5,7 +5,11 @@
     </div>
     <div class="products-store__filter-wrapper">
       <the-filter class="products-store__filter-icon" />
-      <the-selector ref="filt" class="products-store__filter" v-model="sortBy" />
+      <the-selector
+        ref="filt"
+        class="products-store__filter"
+        v-model="sortBy"
+      />
     </div>
 
     <the-shop-card class="products-store__shop-card" :mass="sortedList" />
@@ -22,14 +26,14 @@ export default {
     return {
       router: this.$route.params.id,
       list: [],
-      sortBy: "a-z"
+      sortBy: "a-z",
     };
   },
   components: {
     TheShopCard,
     TheSelector,
     TheFilter,
-    TheProductInfo
+    TheProductInfo,
   },
   computed: {
     sortedList() {
@@ -84,10 +88,10 @@ export default {
         default:
       }
       return Flist;
-    }
+    },
   },
   watch: {
-    $route: "changeRoute"
+    $route: "changeRoute",
   },
   created() {
     this.list = this.$store.state.store[this.router];
@@ -102,8 +106,8 @@ export default {
     },
     filterUpdate() {
       this.$refs.filt.filterBy();
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -113,7 +117,7 @@ export default {
   flex-direction: column;
   min-height: 100vh;
   &__shop-list {
-    padding: 20px;
+    padding: 20px 0px 20px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
