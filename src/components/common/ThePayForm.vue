@@ -32,7 +32,7 @@
       type="submit"
       :disabled="done < form.length"
     >
-      <span class="pay-form__price">To pay ${{ Total }}</span>
+      <span class="pay-form__price">To pay ${{ Total.toFixed(2) }}</span>
     </button>
   </form>
 </template>
