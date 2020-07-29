@@ -4,8 +4,8 @@
       <li
         v-for="item in mass"
         :key="item.id"
-        class="shop-card "
-        uk-parallax="opacity: 0,1; y: 150,0; viewport: 0.3"
+        class="shop-card"
+        uk-parallax="opacity: 0,1; y: 150,0; viewport: 0.2"
       >
         <div class="shop-card__img-wrapper">
           <img class="imgs" :src="item.img" :alt="item.img" />
@@ -17,36 +17,24 @@
           <button
             @click="addToItems(item), notification(item.name)"
             class="shop-card__button"
-          >
-            add to cart
-          </button>
+          >add to cart</button>
 
           <button
             @click="calModal(item.description, item.name)"
             class="shop-card__button"
             href="#modal-center"
             uk-toggle
-          >
-            info
-          </button>
+          >info</button>
         </div>
       </li>
     </ul>
 
     <div id="modal-center" class="uk-flex-top" uk-modal>
       <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-        <button
-          class="uk-modal-close-default modal"
-          type="button"
-          uk-close
-        ></button>
+        <button class="uk-modal-close-default modal" type="button" uk-close></button>
         <h3 class="title modal__title">{{ modalName }}</h3>
         <ul class="modal__list">
-          <li
-            v-for="(value, name) in modal"
-            :key="value.id"
-            class="modal__item"
-          >
+          <li v-for="(value, name) in modal" :key="value.id" class="modal__item">
             <article class="modal__article">
               <span class="modal__name">{{ name }}</span>
               <span class="modal__value">{{ value }}</span>

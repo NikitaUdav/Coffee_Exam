@@ -1,10 +1,9 @@
 <template>
-  <form id="appForm" @submit="clearCart" action="" class="pay-form">
+  <form id="appForm" @submit="clearCart" action class="pay-form">
     <h2 class="title pay-form__title">Contact information</h2>
     <ul class="pay-form__list">
       <li class="pay-form__item" v-for="(item, index) in form" :key="item.id">
         <label class="pay-form__uper-title">{{ item.name }}</label>
-        <!-- <span class="fa" v-if="controls[index].activated" :class="controls[index].error ? 'fa-exclamation-circle text-danger' : 'fa-check-circle text-success'"> -->
         <input
           class="pay-form__input"
           :name="item.name"
@@ -13,15 +12,11 @@
           :value="item.value"
           @input="onInput(index, $event.target.value)"
           :maxlength="item.maxl"
-          v-mask="item.mask"
+          :class=" controls[index].activated?(controls[index].error ? 'danger-bord' : 'success-bord'):true"
         />
       </li>
     </ul>
-    <button
-      class="pay-form__button"
-      type="submit"
-      :disabled="done < form.length"
-    >
+    <button class="pay-form__button" type="submit" :disabled="done < form.length">
       <span class="pay-form__price">To pay ${{ Total }}</span>
     </button>
   </form>
@@ -34,7 +29,6 @@ export default {
   directives: { mask },
   computed: {
     ...mapGetters(["Total"]),
-
     done() {
       let done = 0;
 
@@ -58,8 +52,8 @@ export default {
           type: "text",
           placeHolder: "Ivan",
           value: "",
-          pattern: /^[a-zA-Z ]{2}/,
-          mask: null,
+          pattern: /^[a-zA-Z ]{2,}/,
+          mask: "",
           maxl: 12,
         },
         {
@@ -68,8 +62,8 @@ export default {
           type: "text",
           placeHolder: "Groznyi",
           value: "",
-          pattern: "^[a-zA-Z ]{2}",
-          mask: null,
+          pattern: "^[a-zA-Z ]{2,}",
+          mask: "#####",
           maxl: 12,
         },
         {
@@ -78,7 +72,7 @@ export default {
           type: "email",
           placeHolder: "example@mail.com",
           value: "",
-          mask: null,
+          mask: "#####",
           pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
           maxl: 30,
         },
@@ -89,7 +83,7 @@ export default {
           placeHolder: "+380(00)000-00-00",
           value: "",
           mask: "+###(##)###-##-##",
-          pattern: "[0-9]",
+          pattern: "[0-9]{12,}",
           maxl: 17,
         },
       ],
@@ -139,6 +133,7 @@ export default {
     }
   }
   &__item {
+    position: relative;
     padding: 5px;
     margin-bottom: 5px;
   }
@@ -146,6 +141,7 @@ export default {
     margin-bottom: 5px;
   }
   &__input {
+    position: relative;
     @include text($H300, 400, $dark);
     width: 100%;
     outline: none;
@@ -154,11 +150,11 @@ export default {
     min-height: 40px;
     padding: 2px;
     padding-left: 5px;
+    border: 2px solid rgba(0, 0, 0, 0.65);
   }
   &__button {
     @include text($H400, 400, $sale);
     position: relative;
-
     transition: all ease 0.3s;
     border: none;
     outline: none;
@@ -205,5 +201,11 @@ export default {
       }
     }
   }
+}
+.success-bord {
+  border-color: rgba(0, 109, 15, 0.35);
+}
+.danger-bord {
+  border-color: rgba(210, 0, 0, 0.35);
 }
 </style>

@@ -6,8 +6,11 @@
       src="https://images.wallpaperscraft.ru/image/gorod_kafe_stul_stolik_razmytost_boke_59087_1440x900.jpg"
       alt="main-photo"
     />
-    <transition-group name="fade" tag="div" class="header__title">
-      <span v-for="(item, index) in text" :key="index">{{ item }}</span>
+    <transition-group name="fade" tag="span" class="header__title">
+      <span v-for="(item, index) in text[0]" :key="index">{{ item }}</span>
+    </transition-group>
+    <transition-group name="fade" tag="span" class="header__title">
+      <span v-for="(item, index) in text[1]" :key="index">{{ item }}</span>
     </transition-group>
   </header>
 </template>
@@ -16,9 +19,11 @@ export default {
   name: "TheHeader",
   data() {
     return {
-      text: [],
-      message: [..."Best and high quality, made with love just for you..."],
+      text: [[], []],
+      message: [..."Best and high quality, made/ with love just for you... "],
+      word: "",
       i: 0,
+      countStr: 0,
       timing: 250,
       timer: 250,
       loading: false,
@@ -37,14 +42,21 @@ export default {
       if (t.i > t.message.length - 1) {
         clearTimeout(t.timer);
       } else {
+        t.message[t.i] === "/" ? t.countStr++ : t.countStr;
         if (t.message[t.i] === " ") {
-          t.text.push("\u00A0");
+          t.text[t.countStr].push(t.word);
+          t.word = "";
+          t.text[t.countStr].push("\u00A0");
+        } else if (t.message[t.i] === "/") {
+          t.countStr;
         } else {
-          t.text.push(t.message[t.i]);
+          t.word += t.message[t.i];
+          console.log(`t.word =${t.word}, t.message[t.i] = ${t.message[t.i]}`);
+          //
         }
+        t.i++;
         t.text.join();
         t.timing = 100; //Math.floor(Math.random() * (100 - 2)) + 1;
-        t.i++;
         this.timout();
       }
     },
@@ -56,7 +68,8 @@ export default {
 .fade-leave-active {
   transition: all 2s;
 }
-.fade-enter, .fade-leave-to /* .list-leave-active до версии 2.1.8 */ {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 .header {
@@ -69,16 +82,16 @@ export default {
   &__title {
     z-index: 2;
     @include text($H700, 700, $light);
+    padding: 0px 15px 0px 15px;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
     flex-wrap: wrap;
+    align-items: flex-start;
     text-transform: uppercase;
     text-align: center;
     width: 100%;
-    min-height: 150px;
+    min-height: 75px;
     max-width: 850px;
-    padding: 32px;
   }
 
   &::before {
