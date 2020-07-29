@@ -84,13 +84,15 @@
               <div class="glide__img-wrapper">
                 <img
                   class="img glide__img cover"
-                  src="./img/cip1.jpg"
+                  src="./img/purover(2).jpg"
                   alt="picture"
                 />
               </div>
               <h3 class="glide__title title">Alternative coffee</h3>
               <div class="glide__inputs">
-                <router-link class="our-products__link" to="/alts"
+                <router-link
+                  class="our-products__link"
+                  :to="{ name: 'List', params: { id: 'alternative' } }"
                   >More</router-link
                 >
               </div>

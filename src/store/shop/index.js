@@ -1,31 +1,5 @@
 export const alternative = [
   {
-    id: 1,
-    name: "french press",
-    cost: 100,
-    description: {
-      weight: "300g",
-      material: "glass",
-      manufacturer: "USsssA",
-      capacity: "4 cup",
-      virtues: "",
-    },
-    img: require("@/components/common/img/alts/french(1).jpg"),
-  },
-  {
-    id: 2,
-    name: "french press",
-    cost: 200,
-    img: require("@/components/common/img/alts/french(2).jpg"),
-    description: {
-      weight: "300g",
-      material: "metal",
-      manufacturer: "China",
-      capacity: "5 cup",
-      virtues: "",
-    },
-  },
-  {
     id: 3,
     name: "french press",
     cost: 200,

@@ -64,6 +64,7 @@ export default {
   &__container {
     margin: 0 auto;
     max-width: 1570px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -110,6 +111,7 @@ export default {
     display: flex;
     width: 100%;
     height: 400px;
+    min-width: 300px;
     max-width: 600px;
     border: solid 2px $dark;
     border-radius: 20px;

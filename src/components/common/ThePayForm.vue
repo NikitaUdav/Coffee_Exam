@@ -1,8 +1,12 @@
 <template>
-  <form id="appForm" @submit="clearCart" action class="pay-form">
+  <form id="appForm" @submit.prevent="submit" class="pay-form" novalidate>
     <h2 class="title pay-form__title">Contact information</h2>
     <ul class="pay-form__list">
-      <li class="pay-form__item" v-for="(item, index) in form" :key="item.id">
+      <li
+        class="pay-form__item"
+        v-for="(item, index) in this.form"
+        :key="item.id"
+      >
         <label class="pay-form__uper-title">{{ item.name }}</label>
         <input
           class="pay-form__input"
@@ -12,11 +16,22 @@
           :value="item.value"
           @input="onInput(index, $event.target.value)"
           :maxlength="item.maxl"
-          :class=" controls[index].activated?(controls[index].error ? 'danger-bord' : 'success-bord'):true"
+          :class="
+            controls[index].activated
+              ? controls[index].error
+                ? 'danger-bord'
+                : 'success-bord'
+              : true
+          "
         />
       </li>
     </ul>
-    <button class="pay-form__button" type="submit" :disabled="done < form.length">
+
+    <button
+      class="pay-form__button"
+      type="submit"
+      :disabled="done < form.length"
+    >
       <span class="pay-form__price">To pay ${{ Total }}</span>
     </button>
   </form>
@@ -28,16 +43,14 @@ export default {
   name: "ThePayForm",
   directives: { mask },
   computed: {
-    ...mapGetters(["Total"]),
+    ...mapGetters(["Total", "form"]),
     done() {
       let done = 0;
-
       for (let i = 0; i < this.controls.length; i++) {
         if (!this.controls[i].error) {
           done++;
         }
       }
-
       return done;
     },
   },
@@ -45,70 +58,43 @@ export default {
     return {
       name: "",
       phone: 0,
-      form: [
-        {
-          id: "firstName",
-          name: "First name",
-          type: "text",
-          placeHolder: "Ivan",
-          value: "",
-          pattern: /^[a-zA-Z ]{2,}/,
-          mask: "",
-          maxl: 12,
-        },
-        {
-          id: "lastName",
-          name: "Last name",
-          type: "text",
-          placeHolder: "Groznyi",
-          value: "",
-          pattern: "^[a-zA-Z ]{2,}",
-          mask: "#####",
-          maxl: 12,
-        },
-        {
-          id: "email",
-          name: "Email",
-          type: "email",
-          placeHolder: "example@mail.com",
-          value: "",
-          mask: "#####",
-          pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-          maxl: 30,
-        },
-        {
-          id: "phone",
-          name: "Phone",
-          type: "tel",
-          placeHolder: "+380(00)000-00-00",
-          value: "",
-          mask: "+###(##)###-##-##",
-          pattern: "[0-9]{12,}",
-          maxl: 17,
-        },
-      ],
+      formL: [],
       controls: [],
       formSubmited: false,
     };
   },
   created() {
-    for (let i = 0; i < this.form.length; i++) {
-      let pattern = new RegExp(this.form[i].pattern);
+    this.formL = [...this.form];
+    let form = this.formL;
+    for (let i = 0; i < form.length; i++) {
+      let pattern = new RegExp(form[i].pattern);
       this.controls.push({
-        error: !pattern.test(this.form[i].value),
-        activated: this.form[i].value != "",
+        error: !pattern.test(form[i].value),
+        activated: form[i].value != "",
       });
     }
   },
   methods: {
-    ...mapActions(["clearCart"]),
+    ...mapActions(["clearCart", "changeValue"]),
     onInput(index, value) {
-      let data = this.form[index];
+      let form = this.formL;
+      let data = form[index];
       let control = this.controls[index];
       let pattern = new RegExp(data.pattern);
       data.value = value;
       control.error = !pattern.test(value);
       control.activated = true;
+      this.changeValue(value, index);
+    },
+    submit() {
+      this.goFinish();
+      this.clearCart();
+    },
+    goFinish() {
+      this.$router.push({ name: "Finaly" });
+    },
+    save() {
+      this.changeValue(this.formL);
     },
   },
 };
@@ -119,7 +105,7 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  @media screen and (min-width: 840px) {
+  @media screen and (min-width: $screen-desktop) {
     width: 50%;
   }
   &__title {
@@ -128,7 +114,7 @@ export default {
   &__list {
     width: 100%;
     margin-bottom: 40px;
-    @media screen and (min-width: 840px) {
+    @media screen and (min-width: $screen-desktop) {
       width: 50%;
     }
   }
@@ -155,6 +141,7 @@ export default {
   &__button {
     @include text($H400, 400, $sale);
     position: relative;
+
     transition: all ease 0.3s;
     border: none;
     outline: none;
@@ -203,9 +190,9 @@ export default {
   }
 }
 .success-bord {
-  border-color: rgba(0, 109, 15, 0.35);
+  border-color: rgba(0, 109, 15, 0.75);
 }
 .danger-bord {
-  border-color: rgba(210, 0, 0, 0.35);
+  border-color: rgba(210, 0, 0, 0.75);
 }
 </style>

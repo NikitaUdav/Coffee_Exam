@@ -51,7 +51,7 @@ export default {
           t.countStr;
         } else {
           t.word += t.message[t.i];
-          console.log(`t.word =${t.word}, t.message[t.i] = ${t.message[t.i]}`);
+          //console.log(`t.word =${t.word}, t.message[t.i] = ${t.message[t.i]}`);
           //
         }
         t.i++;
