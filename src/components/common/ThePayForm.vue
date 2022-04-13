@@ -1,5 +1,5 @@
 <template>
-  <form id="appForm" @submit.prevent="submit" class="pay-form" action="https://hook.integromat.com/6awjq36lagc97qt1nuyk67d2f3apmfqs" method="post novalidate>
+  <form id="appForm" @submit.prevent="submit" class="pay-form" action="https://hook.integromat.com/6awjq36lagc97qt1nuyk67d2f3apmfqs" method="post novalidate">
     <h2 class="title pay-form__title">Contact information</h2>
     <ul class="pay-form__list">
       <li

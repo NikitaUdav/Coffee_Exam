@@ -2,7 +2,7 @@
   <section class="about">
     <img
       class="img about__img"
-      src="https://images.wallpaperscraft.ru/image/kofe_espresso_chashka_penka_111215_1600x1200.jpg"
+      src="./img/pizza.jpg"
       alt="about-photo"
     />
     <article

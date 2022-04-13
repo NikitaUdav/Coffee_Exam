@@ -3,7 +3,7 @@
     <img
       v-if="loading"
       class="img header__img"
-      src="https://images.wallpaperscraft.ru/image/gorod_kafe_stul_stolik_razmytost_boke_59087_1440x900.jpg"
+      src="./img/food.jpg"
       alt="main-photo"
     />
     <transition-group name="fade" tag="span" class="header__title">
