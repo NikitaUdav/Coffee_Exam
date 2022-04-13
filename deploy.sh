@@ -21,4 +21,4 @@ git commit -m 'deploy'
 
 # если вы публикуете по адресу https://<USERNAME>.github.io/<REPO>
 git push -f git@github.com:nikitaudav/Coffee_Exam.git master:gh-pages
-cd -
+
